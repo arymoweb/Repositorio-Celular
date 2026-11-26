@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>AgriCode · Sites em camadas</title>
+<link rel="stylesheet" href="../base/agricode.css">
+<style>
+/* =========================================================
+   MODELO 1 · "PÔR DO SOL"  (tema: criação de sites)
+   Fundo escuro com brilho âmbar vindo de baixo, palavra gigante
+   condensada atrás do objeto, títulos em 3 níveis, camadas.
+   ========================================================= */
+.sol {
+  --acento: var(--ambar);
+  --fora-bg: #040705;
+  --janela-bg:
+    radial-gradient(120% 62% at 50% 112%, rgba(246, 150, 48, .62), rgba(170, 82, 18, .22) 45%, transparent 72%),
+    radial-gradient(90% 45% at 50% -5%, rgba(70, 130, 70, .22), transparent 70%),
+    #09130D;
+}
+.sol .particulas i { --p-cor: #FFD9A0; }
+
+/* ---------- 1 · capa ---------- */
+.capa .k1 { position: absolute; top: 186px; left: 0; right: 0; text-align: center; z-index: 6; }
+.gigante {
+  position: absolute; left: 0; right: 0; top: 214px; z-index: 4; text-align: center;
+  font-family: var(--f-cond); font-size: 318px; line-height: 1; letter-spacing: -3px;
+  color: #F4F1EA;
+  background: linear-gradient(#ffffff 30%, #cfc8bb);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 30px rgba(255, 220, 170, .25));
+}
+.gigante.borrao { filter: blur(16px); opacity: .55; z-index: 3; }
+.capa .celular { left: 468px; top: 440px; transform: rotate(7deg); z-index: 10; }
+.frase {
+  position: absolute; left: 84px; top: 835px; z-index: 12; transform: rotate(-5deg);
+  font-family: var(--f-serif); font-style: italic; font-size: 80px; line-height: .98; color: var(--ambar-2);
+  text-shadow: 0 6px 30px rgba(0, 0, 0, .6), 0 0 40px rgba(244, 169, 60, .35);
+}
+.capa .arrasta { right: auto; left: 84px; bottom: 84px; }
+
+/* tela de busca dentro do celular */
+.busca { background: #F6F7F5; height: 100%; font-family: var(--f-sans); color: #1b1f1c; }
+.busca .campo {
+  margin: 6px 22px 0; height: 66px; border-radius: 40px; background: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, .08); display: flex; align-items: center; gap: 14px; padding: 0 22px;
+  font-size: 19px; color: #333;
+}
+.busca .campo svg { width: 24px; flex: none; }
+.busca .abas { display: flex; gap: 26px; padding: 18px 34px 0; font-size: 17px; color: #777; border-bottom: 1px solid #e3e5e2; }
+.busca .abas span { padding-bottom: 12px; }
+.busca .abas span:first-child { color: #1b5e20; border-bottom: 3px solid #2e7d32; font-weight: 600; }
+.mapa {
+  height: 120px; margin: 14px 22px 0; border-radius: 22px; position: relative; overflow: hidden;
+  background:
+    linear-gradient(115deg, transparent 46%, #fff 46% 49%, transparent 49%),
+    linear-gradient(20deg, transparent 60%, #fff 60% 62.5%, transparent 62.5%),
+    linear-gradient(160deg, transparent 30%, #f3e7b9 30% 33%, transparent 33%),
+    #dfe9d3;
+}
+.mapa i { position: absolute; width: 26px; height: 26px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); background: #d64532; box-shadow: 0 3px 6px rgba(0,0,0,.25); }
+.resultado { margin: 12px 22px 0; padding: 14px 20px; border-radius: 22px; background: #fff; box-shadow: 0 1px 6px rgba(0,0,0,.06); }
+.resultado h5 { margin: 0; font-size: 21px; font-weight: 600; color: #1a3f8f; }
+.resultado p { margin: 2px 0 8px; font-size: 15px; color: #666; }
+.resultado .estrelas { color: #f0a800; letter-spacing: 1px; }
+.resultado .acoes { display: flex; gap: 10px; }
+.resultado .acoes span { font-size: 14px; padding: 6px 14px; border-radius: 30px; border: 1px solid #cfd6cc; color: #2e5e2a; font-weight: 500; }
+.resultado.falta {
+  background: rgba(244, 169, 60, .1); box-shadow: none; border: 2.5px dashed #e08a1e; text-align: center; padding: 22px;
+}
+.resultado.falta h5 { color: #b5620b; }
+.resultado.falta p { margin: 4px 0 0; color: #9a5a17; }
+
+/* ---------- 2 · camadas ---------- */
+.pilha { position: absolute; left: 70px; top: 470px; width: 600px; height: 640px; z-index: 8; }
+.camada {
+  position: absolute; left: 80px; width: 440px; height: 340px; border-radius: 26px;
+  transform: rotateX(60deg) rotateZ(-42deg);
+  border: 2px solid rgba(255, 220, 170, .35);
+  background: linear-gradient(135deg, rgba(60, 40, 20, .72), rgba(15, 20, 15, .85));
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .4), 0 40px 60px rgba(0, 0, 0, .55);
+  overflow: hidden;
+}
+.camada > * { position: absolute; }
+.c1 { top: 300px; background: linear-gradient(135deg, #1d2a20, #0b100c); }
+.c2 { top: 225px; }
+.c3 { top: 150px; }
+.c4 { top: 75px; }
+.c5 { top: 0; background: linear-gradient(135deg, rgba(90, 60, 25, .55), rgba(25, 25, 20, .7)); }
+/* conteúdo de cada camada */
+.rack { left: 40px; right: 40px; height: 44px; border-radius: 10px; background: #26352a; box-shadow: inset 0 0 0 2px #344a39; }
+.rack::after { content: ''; position: absolute; right: 16px; top: 16px; width: 12px; height: 12px; border-radius: 50%; background: var(--lima); box-shadow: 0 0 12px var(--lima), -26px 0 0 #ffb547; }
+.cod { left: 40px; height: 14px; border-radius: 8px; }
+.bloco { border-radius: 12px; background: rgba(255, 225, 180, .16); box-shadow: inset 0 0 0 2px rgba(255, 225, 180, .35); }
+.foto { left: 36px; top: 36px; width: 200px; height: 140px; border-radius: 14px; overflow: hidden; }
+.linha-txt { height: 14px; border-radius: 8px; background: rgba(255, 240, 220, .45); }
+.busca-mini { left: 40px; right: 40px; top: 60px; height: 64px; border-radius: 40px; background: rgba(255, 255, 255, .92); }
+.busca-mini::after { content: ''; position: absolute; left: 24px; top: 18px; width: 18px; height: 18px; border-radius: 50%; border: 4px solid #2e7d32; }
+.rank { left: 40px; height: 40px; border-radius: 12px; background: rgba(255, 255, 255, .12); }
+.rank.top { background: rgba(244, 169, 60, .55); }
+
+.rotulos { position: absolute; left: 600px; top: 520px; z-index: 9; }
+.rotulo { position: absolute; left: 0; display: flex; align-items: center; gap: 18px; white-space: nowrap; font-size: 35px; font-weight: 500; color: #fff; }
+.rotulo::before { content: ''; width: 44px; height: 2px; background: rgba(255, 255, 255, .35); margin-right: -6px; }
+
+/* ---------- 3 · celular ---------- */
+.s3 .celular { left: 325px; top: 470px; transform: rotate(-4deg); z-index: 8; }
+.chip {
+  position: absolute; z-index: 12; display: flex; align-items: center; gap: 14px;
+  padding: 14px 24px 14px 16px; border-radius: 22px;
+  background: rgba(20, 22, 18, .72); backdrop-filter: blur(12px);
+  box-shadow: inset 0 0 0 1.5px rgba(255, 220, 170, .28), 0 20px 40px rgba(0, 0, 0, .4);
+  font-size: 26px; font-weight: 500; color: #fff;
+}
+.chip .ok { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: var(--lima); color: #12300c; font-weight: 800; font-size: 24px; }
+.chip small { display: block; font-size: 18px; font-weight: 400; color: rgba(255,255,255,.6); margin-top: 2px; }
+
+/* mini-site reaproveitável (tudo em "em": escala com o font-size) */
+.site { --c: #F4A93C; --c2: #1d2b1f; height: 100%; background: #fff; color: #1a1f1b; font-family: var(--f-sans); font-size: 20px; }
+.site .s-nav { display: flex; justify-content: space-between; align-items: center; height: 3em; padding: 0 1.1em; font-size: 1em; }
+.site .s-nav b { font-weight: 700; letter-spacing: -.02em; }
+.site .s-nav b i { font-style: normal; color: var(--c); }
+.site .s-nav span { display: flex; flex-direction: column; gap: .22em; }
+.site .s-nav span::before, .site .s-nav span::after { content: ''; width: 1.2em; height: .16em; border-radius: 1em; background: #333; }
+.site .s-hero { position: relative; height: 13em; margin: 0 .7em; border-radius: 1.1em; overflow: hidden; color: #fff; padding: 1.2em; }
+.site .s-hero h4 { position: relative; z-index: 2; margin: 0; font-size: 1.55em; line-height: 1.1; font-weight: 700; letter-spacing: -.03em; text-shadow: 0 2px 12px rgba(0,0,0,.35); }
+.site .s-btn { position: absolute; z-index: 2; left: 1.2em; bottom: 1.1em; padding: .55em 1em; border-radius: 2em; background: var(--c); color: #1b1407; font-weight: 600; font-size: .8em; display: inline-flex; gap: .4em; align-items: center; }
+.site .s-sec { padding: 1em 1.1em .5em; font-weight: 700; font-size: 1em; }
+.site .s-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .6em; padding: 0 .7em; }
+.site .s-grid div { border-radius: .9em; background: #f3f1ea; padding: .6em; font-size: .72em; font-weight: 600; }
+.site .s-grid div i { display: block; height: 4.2em; border-radius: .6em; margin-bottom: .5em; background: var(--g, linear-gradient(135deg, #c9a46b, #8a6a3a)); }
+.site .s-zap { position: absolute; right: .9em; bottom: .9em; width: 2.8em; height: 2.8em; border-radius: 50%; background: #25a244; box-shadow: 0 .4em 1em rgba(0,0,0,.25); display: grid; place-items: center; }
+.site .s-zap::before { content: ''; width: 1.2em; height: 1em; border-radius: .5em .5em .5em .1em; background: #fff; }
+
+/* ---------- 4 · leque ---------- */
+.leque { position: absolute; left: 0; right: 0; top: 560px; height: 600px; z-index: 8; }
+.leque .tablet { width: 380px; height: 520px; }
+.leque .t-esq { left: 95px; top: 40px; transform: rotate(-11deg); }
+.leque .t-dir { right: 95px; top: 40px; transform: rotate(11deg); }
+.leque .t-meio { left: 340px; top: -10px; width: 400px; height: 560px; z-index: 3; }
+.leque .site { font-size: 15px; }
+.etiqueta {
+  position: absolute; z-index: 12; padding: 10px 24px; border-radius: 99px; font-size: 25px; font-weight: 600;
+  background: var(--ambar); color: #241606; box-shadow: 0 10px 30px rgba(0,0,0,.4);
+}
+
+/* ---------- 5 · checklist ---------- */
+.lista { position: absolute; left: 110px; right: 110px; top: 380px; z-index: 8; display: flex; flex-direction: column; gap: 18px; }
+.item {
+  display: flex; align-items: center; gap: 28px; padding: 20px 30px; border-radius: 28px;
+  background: linear-gradient(90deg, rgba(255, 210, 150, .1), rgba(255, 255, 255, .03));
+  box-shadow: inset 0 0 0 1.5px rgba(255, 220, 170, .18);
+  backdrop-filter: blur(6px);
+}
+.item h6 { margin: 0; font-size: 36px; line-height: 1.15; font-weight: 600; letter-spacing: -.8px; color: #fff; }
+.item p { margin: 4px 0 0; font-size: 25px; line-height: 1.3; color: rgba(255, 255, 255, .62); }
+.item .num { width: 60px; height: 60px; font-size: 29px; }
+
+/* ---------- 6 · CTA ---------- */
+.banner {
+  position: absolute; left: 95px; right: 95px; top: 520px; z-index: 8; border-radius: 34px; overflow: hidden;
+  box-shadow: 0 0 0 2px rgba(255, 220, 170, .2), 0 40px 90px rgba(0, 0, 0, .6), 0 0 120px rgba(244, 169, 60, .25);
+}
+.banner img { display: block; width: 100%; }
+.comenta { position: absolute; left: 0; right: 0; top: 960px; z-index: 8; text-align: center; }
+.comenta .linha1 { font-size: 46px; font-weight: 500; color: #fff; display: inline-flex; align-items: center; gap: 22px; }
+.comenta .palavra {
+  font-family: var(--f-cond); font-size: 74px; letter-spacing: 2px; color: #231505; line-height: 1;
+  padding: 14px 34px 10px; border-radius: 22px; background: linear-gradient(180deg, var(--ambar-2), var(--ambar));
+  box-shadow: 0 0 50px rgba(244, 169, 60, .5);
+}
+.comenta .linha2 { margin-top: 22px; font-size: 38px; color: rgba(255, 255, 255, .78); }
+</style>
+</head>
+<body>
+
+<!-- ======================= 01 · CAPA ======================= -->
+<section class="slide sol capa">
+  <div class="janela">
+    <div class="kicker k1">Seu cliente <span class="ambar">pesquisa no</span></div>
+    <div class="gigante borrao">GOOGLE</div>
+    <div class="gigante">GOOGLE</div>
+
+    <div class="celular">
+      <div class="ilha"></div>
+      <div class="tela busca">
+        <div class="status"><span>9:41</span><span>●●● ▮</span></div>
+        <div class="campo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.6"><circle cx="10" cy="10" r="7"/><path d="M15.5 15.5 22 22"/></svg>
+          revenda de insumos perto de mim
+        </div>
+        <div class="abas"><span>Tudo</span><span>Mapas</span><span>Imagens</span><span>Notícias</span></div>
+        <div class="mapa"><i style="left:22%;top:30%"></i><i style="left:58%;top:52%"></i><i style="left:76%;top:22%"></i></div>
+        <div class="resultado">
+          <h5>Agro Concorrente</h5>
+          <p><span class="estrelas">★★★★★</span> 4,8 · Aberto agora</p>
+          <div class="acoes"><span>Site</span><span>Rotas</span><span>Ligar</span></div>
+        </div>
+        <div class="resultado">
+          <h5>Casa do Produtor</h5>
+          <p><span class="estrelas">★★★★☆</span> 4,6 · Fecha às 18h</p>
+          <div class="acoes"><span>Site</span><span>Rotas</span><span>Ligar</span></div>
+        </div>
+        <div class="resultado falta">
+          <h5>E a sua empresa?</h5>
+          <p>não aparece por aqui…</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="frase">e acha o seu<br>concorrente.</div>
+    <div class="arrasta">arrasta pro lado <svg viewBox="0 0 34 16" fill="none" stroke="#fff" stroke-width="2.4"><path d="M0 8h31M24 1l7 7-7 7"/></svg></div>
+  </div>
+  <i class="folha" style="left:-70px;bottom:40px;width:300px" data-rot="-18" data-blur="12"></i>
+  <i class="folha" style="right:-60px;top:150px;width:200px" data-rot="160" data-blur="16"></i>
+</section>
+
+<!-- ======================= 02 · CAMADAS ======================= -->
+<section class="slide sol s2">
+  <div class="janela">
+    <div class="titulo">
+      <div class="t-leve">Parece só uma página,</div>
+      <div class="t-forte">mas um site profissional</div>
+      <div class="t-destaque">é feito em camadas.</div>
+    </div>
+
+    <div class="pilha">
+      <div class="camada c1">
+        <div class="rack" style="top:50px"></div><div class="rack" style="top:118px"></div>
+        <div class="rack" style="top:186px"></div><div class="rack" style="top:254px"></div>
+      </div>
+      <div class="camada c2">
+        <div class="cod" style="top:50px;width:160px;background:#8FDC55"></div>
+        <div class="cod" style="top:84px;left:80px;width:220px;background:#F4A93C"></div>
+        <div class="cod" style="top:118px;left:80px;width:140px;background:rgba(255,255,255,.5)"></div>
+        <div class="cod" style="top:152px;left:120px;width:200px;background:#7fc3ff"></div>
+        <div class="cod" style="top:186px;left:80px;width:120px;background:rgba(255,255,255,.5)"></div>
+        <div class="cod" style="top:220px;width:90px;background:#8FDC55"></div>
+      </div>
+      <div class="camada c3">
+        <div class="bloco" style="left:36px;top:34px;width:368px;height:40px"></div>
+        <div class="bloco" style="left:36px;top:92px;width:220px;height:150px"></div>
+        <div class="bloco" style="left:274px;top:92px;width:130px;height:68px"></div>
+        <div class="bloco" style="left:274px;top:174px;width:130px;height:68px"></div>
+        <div class="bloco" style="left:36px;top:258px;width:368px;height:46px"></div>
+      </div>
+      <div class="camada c4">
+        <div class="foto ceu-sol"><div class="lavoura" style="height:50%"></div></div>
+        <div class="linha-txt" style="left:256px;top:44px;width:150px"></div>
+        <div class="linha-txt" style="left:256px;top:72px;width:120px"></div>
+        <div class="linha-txt" style="left:256px;top:100px;width:140px"></div>
+        <div class="linha-txt" style="left:36px;top:206px;width:360px"></div>
+        <div class="linha-txt" style="left:36px;top:236px;width:300px"></div>
+        <div class="linha-txt" style="left:36px;top:266px;width:330px"></div>
+      </div>
+      <div class="camada c5">
+        <div class="busca-mini"></div>
+        <div class="rank top" style="top:150px;width:300px"></div>
+        <div class="rank" style="top:206px;width:250px"></div>
+        <div class="rank" style="top:262px;width:270px"></div>
+      </div>
+    </div>
+
+    <div class="rotulos">
+      <div class="rotulo" style="top:0"><span class="num">5</span>o SEO</div>
+      <div class="rotulo" style="top:112px"><span class="num">4</span>o conteúdo</div>
+      <div class="rotulo" style="top:224px"><span class="num">3</span>o design</div>
+      <div class="rotulo" style="top:336px"><span class="num">2</span>o código</div>
+      <div class="rotulo" style="top:448px"><span class="num">1</span>a hospedagem</div>
+    </div>
+
+    <div class="legenda">Cada <b>camada</b> tem uma função,<br>e todas precisam funcionar juntas.</div>
+  </div>
+  <i class="folha" style="right:-50px;top:420px;width:170px" data-rot="200" data-blur="9"></i>
+</section>
+
+<!-- ======================= 03 · NO CELULAR ======================= -->
+<section class="slide sol s3">
+  <div class="janela">
+    <div class="titulo">
+      <div class="t-leve">Não basta ser bonito, tem que</div>
+      <div class="t-forte">funcionar no celular,</div>
+      <div class="t-destaque">onde seu cliente está.</div>
+    </div>
+
+    <div class="celular">
+      <div class="ilha"></div>
+      <div class="tela">
+        <div class="site" style="--c:#F4A93C">
+          <div class="status"><span>9:41</span><span>●●● ▮</span></div>
+          <div class="s-nav"><b>Campo<i>Forte</i></b><span></span></div>
+          <div class="s-hero ceu-sol">
+            <div class="lavoura" style="height:42%"></div>
+            <h4>Insumos com entrega na sua fazenda</h4>
+            <span class="s-btn">Pedir orçamento →</span>
+          </div>
+          <div class="s-sec">Nossos produtos</div>
+          <div class="s-grid">
+            <div><i style="--g:linear-gradient(135deg,#d9b46a,#8d6b2f)"></i>Sementes</div>
+            <div><i style="--g:linear-gradient(135deg,#9cc46a,#4d7a2a)"></i>Fertilizantes</div>
+            <div><i style="--g:linear-gradient(135deg,#7fb0c9,#3d6a80)"></i>Irrigação</div>
+            <div><i style="--g:linear-gradient(135deg,#c98f6a,#7a4a2f)"></i>Nutrição animal</div>
+          </div>
+          <div class="s-zap"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chip" style="left:34px;top:870px;transform:rotate(-3deg)"><span class="ok">✓</span><div>Abre rápido<small>até com sinal fraco no campo</small></div></div>
+    <div class="chip" style="right:34px;top:650px;transform:rotate(3deg)"><span class="ok">✓</span><div>WhatsApp<small>o cliente chama em 1 toque</small></div></div>
+    <div class="chip" style="left:40px;top:1100px;transform:rotate(-2deg)"><span class="ok">✓</span><div>Fácil de ler<small>até no sol do meio-dia</small></div></div>
+
+  </div>
+  <i class="folha" style="left:-60px;top:330px;width:190px" data-rot="-30" data-blur="14"></i>
+  <i class="folha" style="right:-80px;bottom:60px;width:300px" data-rot="170" data-blur="12"></i>
+</section>
+
+<!-- ======================= 04 · LEQUE ======================= -->
+<section class="slide sol s4">
+  <div class="janela">
+    <div class="titulo">
+      <div class="t-forte">Cada negócio do agro</div>
+      <div class="t-destaque" style="font-size:76px">pede um site diferente,</div>
+      <div class="t-leve" style="margin-top:6px">e a gente faz sob medida.</div>
+    </div>
+
+    <div class="leque">
+      <div class="tablet t-esq"><div class="tela">
+        <div class="site" style="--c:#F4A93C">
+          <div class="s-nav"><b>Campo<i>Forte</i></b><span></span></div>
+          <div class="s-hero ceu-sol"><div class="lavoura" style="height:42%"></div><h4>Insumos com entrega na sua fazenda</h4><span class="s-btn">Pedir orçamento</span></div>
+          <div class="s-sec">Produtos</div>
+          <div class="s-grid"><div><i></i>Sementes</div><div><i style="--g:linear-gradient(135deg,#9cc46a,#4d7a2a)"></i>Adubos</div></div>
+        </div>
+      </div></div>
+
+      <div class="tablet t-dir"><div class="tela">
+        <div class="site" style="--c:#4FB3BF">
+          <div class="s-nav"><b>Coop<i>Vale</i></b><span></span></div>
+          <div class="s-hero" style="background:linear-gradient(160deg,#1f5a66,#0e2f36)"><h4>Área do cooperado</h4><span class="s-btn">Entrar</span></div>
+          <div class="s-sec">Cotação do dia</div>
+          <div class="s-grid"><div><i style="--g:linear-gradient(135deg,#7fd0d8,#2f7f8a)"></i>Soja</div><div><i style="--g:linear-gradient(135deg,#e8d28a,#a88a2f)"></i>Milho</div></div>
+        </div>
+      </div></div>
+
+      <div class="tablet t-meio"><div class="tela">
+        <div class="site" style="--c:#8FDC55">
+          <div class="s-nav"><b>Fazenda<i>Aurora</i></b><span></span></div>
+          <div class="s-hero" style="background:linear-gradient(#5d7d3b,#2c4a1c)"><div class="lavoura" style="height:55%"></div><h4>Genética e qualidade desde o campo</h4><span class="s-btn">Conheça o plantel</span></div>
+          <div class="s-sec">Destaques</div>
+          <div class="s-grid"><div><i style="--g:linear-gradient(135deg,#a3c46a,#557a2a)"></i>Rebanho</div><div><i style="--g:linear-gradient(135deg,#d9b46a,#8d6b2f)"></i>Leilões</div></div>
+        </div>
+      </div></div>
+
+      <span class="etiqueta" style="left:120px;top:560px;transform:rotate(-8deg)">revenda</span>
+      <span class="etiqueta" style="left:440px;top:578px;background:var(--lima)">fazenda</span>
+      <span class="etiqueta" style="right:110px;top:560px;transform:rotate(8deg);background:#7fd0d8">cooperativa</span>
+    </div>
+  </div>
+  <i class="folha" style="left:-80px;bottom:120px;width:260px" data-rot="-10" data-blur="13"></i>
+</section>
+
+<!-- ======================= 05 · CHECKLIST ======================= -->
+<section class="slide sol s5">
+  <div class="janela">
+    <div class="titulo">
+      <div class="t-leve">Na hora de fazer o seu,</div>
+      <div class="t-destaque">não pode faltar:</div>
+    </div>
+    <div class="lista">
+      <div class="item"><span class="num">1</span><div><h6>Botão de WhatsApp</h6><p>o cliente chama em um toque</p></div></div>
+      <div class="item"><span class="num">2</span><div><h6>SEO desde o início</h6><p>pra ser encontrado no Google</p></div></div>
+      <div class="item"><span class="num">3</span><div><h6>Velocidade</h6><p>abre rápido até com sinal fraco</p></div></div>
+      <div class="item"><span class="num">4</span><div><h6>Catálogo</h6><p>produtos e serviços bem apresentados</p></div></div>
+      <div class="item"><span class="num">5</span><div><h6>Pedido de orçamento</h6><p>chega organizado, sem se perder</p></div></div>
+    </div>
+    <div class="legenda" style="bottom:96px">Salva esse post pra usar de <b>checklist</b>.</div>
+  </div>
+  <i class="folha" style="right:-70px;top:250px;width:220px" data-rot="190" data-blur="14"></i>
+</section>
+
+<!-- ======================= 06 · CTA ======================= -->
+<section class="slide sol s6">
+  <div class="janela">
+    <div class="titulo">
+      <div class="t-leve">Bora colocar a sua empresa</div>
+      <div class="t-destaque">no mapa digital?</div>
+    </div>
+    <div class="banner"><img src="../assets/logo/agricode-banner.jpg" alt="AgriCode"></div>
+    <div class="comenta">
+      <div class="linha1">Comenta <span class="palavra">SITE</span></div>
+      <div class="linha2">que a gente te chama no direct.</div>
+    </div>
+    <div class="rodape-mini">@agricodeagencia · criação de sites e sistemas para o agronegócio</div>
+  </div>
+  <i class="folha" style="left:-70px;top:300px;width:230px" data-rot="-25" data-blur="13"></i>
+  <i class="folha" style="right:-90px;bottom:180px;width:300px" data-rot="165" data-blur="12"></i>
+</section>
+
+<script src="../base/agricode.js"></script>
+</body>
+</html>

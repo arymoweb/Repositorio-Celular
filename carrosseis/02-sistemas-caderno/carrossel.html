@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>AgriCode · Sistemas</title>
+<link rel="stylesheet" href="../base/agricode.css">
+<style>
+/* =========================================================
+   MODELO 2 · "NOITE"  (tema: sistemas de gestão)
+   Fundo grafite com brilho verde, letra cursiva gigante
+   colada na palavra condensada, objeto em primeiro plano.
+   ========================================================= */
+.noite {
+  --acento: var(--lima);
+  --fora-bg: #050605;
+  --janela-bg:
+    radial-gradient(85% 50% at 50% -4%, rgba(143, 220, 85, .17), transparent 66%),
+    radial-gradient(70% 45% at 85% 105%, rgba(143, 220, 85, .12), transparent 70%),
+    #0C0F0D;
+}
+.noite .particulas i { --p-cor: #D9F5C2; }
+
+/* ---------- 1 · capa ---------- */
+.capa .k {
+  position: absolute; top: 196px; left: 0; right: 0; text-align: center; z-index: 6;
+  font-size: 50px; font-weight: 400; color: #fff; letter-spacing: -.5px;
+}
+.capa .k .serif { color: var(--lima); font-size: 60px; }
+.palavra-grande { position: absolute; left: 40px; right: 0; top: 284px; z-index: 4; display: flex; justify-content: center; align-items: flex-start; }
+.palavra-grande .script {
+  font-family: var(--f-script); font-size: 430px; line-height: .8; margin-right: -118px; margin-top: -10px; z-index: 2;
+  background: linear-gradient(170deg, var(--lima-2), var(--lima) 50%, #4d9a2a);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 6px 24px rgba(143, 220, 85, .35));
+}
+.palavra-grande .cond {
+  font-family: var(--f-cond); font-size: 222px; line-height: 1; letter-spacing: -2px; padding-top: 40px;
+  background: linear-gradient(#fff 35%, #c9cfc8);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 26px rgba(255, 255, 255, .18));
+}
+.palavra-grande .cond .q { background: linear-gradient(var(--lima-2), var(--lima)); -webkit-background-clip: text; background-clip: text; }
+
+.caderno {
+  position: absolute; left: 215px; top: 560px; width: 640px; height: 760px; z-index: 10;
+  transform: rotate(-7deg); border-radius: 10px 18px 18px 10px;
+  background:
+    linear-gradient(90deg, transparent 96px, rgba(214, 69, 69, .55) 96px 99px, transparent 99px),
+    repeating-linear-gradient(transparent 0 61px, rgba(70, 120, 200, .28) 61px 63px),
+    linear-gradient(#FBF8EE, #F1ECDD);
+  background-position: 0 0, 0 92px, 0 0;
+  box-shadow: 0 50px 90px rgba(0, 0, 0, .6), 12px 12px 0 -4px #e3dccb, 22px 22px 0 -8px #d5cdb9;
+}
+.caderno .espiral { position: absolute; top: -22px; left: 40px; right: 40px; display: flex; justify-content: space-between; }
+.caderno .espiral i { width: 22px; height: 46px; border-radius: 12px; border: 5px solid #3a3f3c; background: transparent; }
+.caderno .escrita { position: absolute; left: 120px; top: 70px; right: 40px; font-family: var(--f-mao); font-weight: 500; font-size: 47px; line-height: 63px; color: #26408f; }
+.caderno .escrita div { white-space: nowrap; }
+.caderno .escrita s { text-decoration-thickness: 3px; color: #5d6fa6; }
+.caderno .escrita .titulo-mao { font-weight: 700; font-size: 54px; text-decoration: underline; text-decoration-thickness: 3px; }
+.caderno .escrita .verm { color: #c0392b; }
+.mancha {
+  position: absolute; right: 70px; bottom: 140px; width: 190px; height: 190px; border-radius: 50%;
+  background: radial-gradient(circle, transparent 58%, rgba(120, 70, 30, .28) 60%, rgba(120, 70, 30, .1) 66%, transparent 70%);
+}
+.lapis {
+  position: absolute; z-index: 12; left: 640px; top: 1090px; width: 420px; height: 34px; transform: rotate(-38deg);
+  border-radius: 4px 0 0 4px;
+  background: linear-gradient(#f7c948, #e0a92a 50%, #c98f17);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, .45);
+}
+.lapis::before { content: ''; position: absolute; right: -60px; top: 0; border-left: 60px solid #f0d2a8; border-top: 17px solid transparent; border-bottom: 17px solid transparent; }
+.lapis::after { content: ''; position: absolute; left: -38px; top: 0; width: 38px; height: 34px; border-radius: 6px 0 0 6px; background: linear-gradient(#e9a0a0, #c96f6f); box-shadow: 8px 0 0 #b9bcb8; }
+
+/* ---------- 2 · caos ---------- */
+.monte { position: absolute; left: 0; right: 0; top: 440px; height: 640px; z-index: 8; }
+.cartao { position: absolute; border-radius: 26px; box-shadow: 0 30px 60px rgba(0, 0, 0, .55); }
+.chat { left: 90px; top: 30px; width: 520px; padding: 22px; background: #E9EDE6; transform: rotate(-5deg); font-size: 24px; color: #1b241d; }
+.chat .cab { display: flex; align-items: center; gap: 14px; padding-bottom: 14px; border-bottom: 1px solid #ccd3c8; margin-bottom: 14px; }
+.chat .cab i { width: 46px; height: 46px; border-radius: 50%; background: linear-gradient(135deg, #8FDC55, #3f8f2a); }
+.chat .cab b { display: block; font-size: 23px; }
+.chat .cab small { font-size: 17px; color: #6c776d; }
+.bolha { padding: 12px 18px; border-radius: 18px 18px 18px 4px; background: #fff; margin: 10px 60px 0 0; line-height: 1.3; box-shadow: 0 1px 2px rgba(0,0,0,.08); }
+.bolha.eu { background: #d6f5c0; margin: 10px 0 0 60px; border-radius: 18px 18px 4px 18px; }
+.bolha small { display: block; font-size: 15px; color: #4c8a3a; font-weight: 600; }
+.arquivo { right: 80px; top: 0; width: 400px; padding: 24px; background: #fff; transform: rotate(6deg); display: flex; gap: 18px; align-items: center; color: #1b241d; }
+.arquivo .ic { width: 70px; height: 86px; flex: none; border-radius: 8px; background: #1f7a43; position: relative; }
+.arquivo .ic::after { content: 'XLS'; position: absolute; left: 0; right: 0; bottom: 12px; text-align: center; color: #fff; font-weight: 700; font-size: 17px; }
+.arquivo b { font-size: 22px; line-height: 1.25; word-break: break-all; }
+.arquivo small { display: block; margin-top: 6px; font-size: 17px; color: #8a8f8a; }
+.postit {
+  right: 110px; top: 215px; width: 330px; height: 300px; padding: 34px 30px; border-radius: 4px; transform: rotate(-4deg);
+  background: linear-gradient(#ffe97a, #f7d84a); font-family: var(--f-mao); font-weight: 700; font-size: 50px; line-height: 1.08; color: #3b3112;
+}
+.nota {
+  left: 170px; top: 330px; width: 400px; padding: 26px 30px 40px; border-radius: 6px 6px 0 0; transform: rotate(4deg);
+  background: #fff; font-family: var(--f-mono); font-size: 19px; color: #444; line-height: 1.7;
+  -webkit-mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 50% / 26px 100%;
+}
+.nota b { display: block; text-align: center; font-size: 21px; margin-bottom: 6px; color: #222; }
+.nota .tot { display: flex; justify-content: space-between; border-top: 2px dashed #bbb; margin-top: 8px; padding-top: 6px; font-weight: 700; color: #c0392b; }
+
+/* ---------- 3 · antes x depois ---------- */
+.lados { position: absolute; left: 80px; right: 80px; top: 480px; z-index: 8; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.lado { border-radius: 34px; padding: 34px 30px 30px; }
+.lado h3 { margin: 0 0 22px; font-family: var(--f-mono); font-size: 26px; font-weight: 700; letter-spacing: .3em; }
+.lado ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 22px; }
+.lado li { display: flex; gap: 16px; align-items: flex-start; font-size: 30px; line-height: 1.22; font-weight: 500; letter-spacing: -.4px; }
+.lado li i { flex: none; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; font-style: normal; font-weight: 800; font-size: 22px; margin-top: 1px; }
+.antes { background: rgba(255, 255, 255, .04); box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, .1); color: rgba(255, 255, 255, .55); }
+.antes h3 { color: rgba(255, 255, 255, .45); }
+.antes li i { background: rgba(230, 90, 70, .2); color: #ff8a73; }
+.antes li span { text-decoration: line-through; text-decoration-color: rgba(255, 138, 115, .6); text-decoration-thickness: 2px; }
+.depois { background: linear-gradient(160deg, rgba(143, 220, 85, .2), rgba(143, 220, 85, .05)); box-shadow: inset 0 0 0 2px rgba(143, 220, 85, .5), 0 0 80px rgba(143, 220, 85, .15); color: #fff; }
+.depois h3 { color: var(--lima); }
+.depois li i { background: var(--lima); color: #14300b; }
+.seta-meio { position: absolute; left: 50%; top: 50%; width: 76px; height: 76px; margin: -38px 0 0 -38px; border-radius: 50%; background: #0C0F0D; box-shadow: inset 0 0 0 2px rgba(143,220,85,.6); display: grid; place-items: center; z-index: 2; }
+
+/* ---------- 4 · painel ---------- */
+.s4 .tablet { left: 70px; top: 490px; width: 940px; height: 620px; transform: rotate(-2deg); z-index: 8; }
+.dash { display: grid; grid-template-columns: 190px 1fr; height: 100%; font-family: var(--f-sans); color: #17231a; background: #F4F6F2; }
+.dash aside { background: #0f2419; color: #cfe3c6; padding: 24px 18px; font-size: 16px; }
+.dash aside .marca { display: flex; gap: 10px; align-items: center; font-weight: 700; color: #fff; font-size: 17px; margin-bottom: 26px; }
+.dash aside .marca i { width: 30px; height: 30px; border-radius: 9px; background: linear-gradient(135deg, var(--lima), #3f8f2a); }
+.dash aside div.it { padding: 10px 12px; border-radius: 10px; margin-bottom: 4px; }
+.dash aside div.it.on { background: rgba(143, 220, 85, .18); color: #fff; font-weight: 600; }
+.dash main { padding: 22px 24px; }
+.dash .top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.dash .top b { font-size: 22px; }
+.dash .top small { display: block; font-size: 14px; color: #6d7a70; }
+.dash .top .av { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, #d9b46a, #8d6b2f); }
+.kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.kpi { background: #fff; border-radius: 14px; padding: 14px; box-shadow: 0 1px 3px rgba(0, 0, 0, .06); }
+.kpi small { font-size: 13px; color: #6d7a70; }
+.kpi b { display: block; font-size: 25px; letter-spacing: -.5px; margin-top: 2px; }
+.kpi em { font-style: normal; font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 10px; }
+.kpi em.alerta { background: #fdebd0; color: #b5620b; }
+.kpi em.bom { background: #e2f5d4; color: #2f6f1b; }
+.graficos { display: grid; grid-template-columns: 1.5fr 1fr; gap: 12px; margin-top: 12px; }
+.graf { background: #fff; border-radius: 14px; padding: 14px; box-shadow: 0 1px 3px rgba(0, 0, 0, .06); font-size: 14px; font-weight: 600; }
+.graf svg { display: block; width: 100%; margin-top: 8px; }
+.s4 .celular { left: 690px; top: 760px; width: 300px; height: 615px; padding: 10px; border-radius: 50px; transform: rotate(6deg); z-index: 12; }
+.s4 .celular .tela { border-radius: 41px; background: linear-gradient(#1d3524, #0c1a11); }
+.s4 .celular .ilha { width: 90px; height: 26px; margin-left: -45px; top: 12px; }
+.push { margin: 90px 14px 0; padding: 16px; border-radius: 22px; background: rgba(255, 255, 255, .9); color: #17231a; font-size: 15px; line-height: 1.35; box-shadow: 0 10px 30px rgba(0,0,0,.3); }
+.push .ap { display: flex; align-items: center; gap: 8px; font-size: 12px; color: #6d7a70; margin-bottom: 6px; }
+.push .ap i { width: 20px; height: 20px; border-radius: 6px; background: linear-gradient(135deg, var(--lima), #3f8f2a); }
+.push b { display: block; font-size: 16px; }
+.hora { text-align: center; color: #fff; font-size: 64px; font-weight: 300; margin-top: 50px; letter-spacing: -2px; }
+
+/* ---------- 5 · módulos ---------- */
+.grade { position: absolute; left: 80px; right: 80px; top: 455px; z-index: 8; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.mod {
+  border-radius: 30px; padding: 22px 26px 22px;
+  background: linear-gradient(160deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .02));
+  box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, .1);
+}
+.mod .ico { width: 54px; height: 54px; border-radius: 16px; display: grid; place-items: center; background: rgba(143, 220, 85, .16); box-shadow: inset 0 0 0 1.5px rgba(143, 220, 85, .45); margin-bottom: 12px; }
+.mod .ico svg { width: 32px; height: 32px; stroke: var(--lima); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.mod h6 { margin: 0; font-size: 32px; line-height: 1.15; font-weight: 600; letter-spacing: -.6px; color: #fff; }
+.mod p { margin: 4px 0 0; font-size: 22px; color: rgba(255, 255, 255, .58); line-height: 1.3; }
+
+/* ---------- 6 · CTA ---------- */
+.banner {
+  position: absolute; left: 95px; right: 95px; top: 520px; z-index: 8; border-radius: 34px; overflow: hidden;
+  box-shadow: 0 0 0 2px rgba(143, 220, 85, .25), 0 40px 90px rgba(0, 0, 0, .6), 0 0 120px rgba(143, 220, 85, .18);
+}
+.banner img { display: block; width: 100%; }
+.comenta { position: absolute; left: 0; right: 0; top: 960px; z-index: 8; text-align: center; }
+.comenta .linha1 { font-size: 46px; font-weight: 500; color: #fff; display: inline-flex; align-items: center; gap: 22px; }
+.comenta .palavra {
+  font-family: var(--f-cond); font-size: 74px; letter-spacing: 2px; color: #112808; line-height: 1;
+  padding: 14px 34px 10px; border-radius: 22px; background: linear-gradient(180deg, var(--lima-2), var(--lima));
+  box-shadow: 0 0 50px rgba(143, 220, 85, .45);
+}
+.comenta .linha2 { margin-top: 22px; font-size: 38px; color: rgba(255, 255, 255, .78); }
+</style>
+</head>
+<body>
+
+<!-- ======================= 01 · CAPA ======================= -->
+<section class="slide noite capa">
+  <div class="janela">
+    <div class="k">sua <span class="serif">gestão</span> ainda roda no</div>
+    <div class="palavra-grande"><span class="script">C</span><span class="cond">ADERNO<span class="q">?</span></span></div>
+
+    <div class="caderno">
+      <div class="espiral"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="escrita">
+        <div class="titulo-mao">Março</div>
+        <div>40 sc soja → João <span class="verm">(pagou??)</span></div>
+        <div>adubo: ver c/ Zé</div>
+        <div><s>vacina lote 3</s> ✓</div>
+        <div>ração barracão: <span class="verm">???</span></div>
+        <div>ligar cliente das 200 sc</div>
+        <div><s>conta de luz</s></div>
+        <div>peça trator → semana q vem</div>
+      </div>
+      <div class="mancha"></div>
+    </div>
+    <div class="lapis"></div>
+
+    <div class="arrasta">arrasta pro lado <svg viewBox="0 0 34 16" fill="none" stroke="#fff" stroke-width="2.4"><path d="M0 8h31M24 1l7 7-7 7"/></svg></div>
+  </div>
+  <i class="folha" style="left:-80px;top:520px;width:260px" data-rot="-20" data-blur="14"></i>
+  <i class="folha" style="right:-50px;top:170px;width:180px" data-rot="150" data-blur="10"></i>
+</section>
+
+<!-- ======================= 02 · CAOS ======================= -->
+<section class="slide noite s2">
+  <div class="janela">
+    <div class="titulo">
+      <div class="t-leve">Pode parecer exagero, mas</div>
+      <div class="t-forte">informação espalhada</div>
+      <div class="t-destaque">custa caro.</div>
+    </div>
+
+    <div class="monte">
+      <div class="cartao arquivo"><span class="ic"></span><div><b>estoque_FINAL_v3_agora_vai.xlsx</b><small>editado por ??? · há 23 dias</small></div></div>
+      <div class="cartao chat">
+        <div class="cab"><i></i><div><b>Grupo Fazenda</b><small>12 participantes</small></div></div>
+        <div class="bolha">alguém sabe quanto tem de ração no barracão?</div>
+        <div class="bolha"><small>Zé</small>acho que acabou</div>
+        <div class="bolha eu">quem pegou a nota do adubo??</div>
+      </div>
+      <div class="cartao nota">
+        <b>NOTA · BALCÃO</b>
+        <div>Sementes ........ ?</div>
+        <div>Frete ........... ?</div>
+        <div>Desconto ........ ?</div>
+        <div class="tot"><span>TOTAL</span><span>R$ ????</span></div>
+      </div>
+      <div class="cartao postit">ligar pro cliente das 200 sacas!!<br>(qual era o nº?)</div>
+    </div>
+
+    <div class="legenda">Pedido no WhatsApp, estoque na planilha<br>e o financeiro no <b>caderno</b>.</div>
+  </div>
+  <i class="folha" style="right:-70px;bottom:260px;width:220px" data-rot="190" data-blur="13"></i>
+</section>
+
+<!-- ======================= 03 · ANTES x DEPOIS ======================= -->
+<section class="slide noite s3">
+  <div class="janela">
+    <div class="titulo">
+      <div class="t-leve">Mesma fazenda,</div>
+      <div class="t-forte">outro nível</div>
+      <div class="t-destaque">de controle.</div>
+    </div>
+
+    <div class="lados">
+      <div class="lado antes">
+        <h3>ANTES</h3>
+        <ul>
+          <li><i>✕</i><span>Caderno e papelada</span></li>
+          <li><i>✕</i><span>Planilha desatualizada</span></li>
+          <li><i>✕</i><span>Pedido perdido no WhatsApp</span></li>
+          <li><i>✕</i><span>Informação só na cabeça do dono</span></li>
+        </ul>
+      </div>
+      <div class="lado depois">
+        <h3>DEPOIS</h3>
+        <ul>
+          <li><i>✓</i>Tudo em um sistema só</li>
+          <li><i>✓</i>Estoque atualizado na hora</li>
+          <li><i>✓</i>Pedidos organizados</li>
+          <li><i>✓</i>Relatório em um clique</li>
+        </ul>
+      </div>
+      <div class="seta-meio"><svg width="34" height="16" viewBox="0 0 34 16" fill="none" stroke="#8FDC55" stroke-width="3"><path d="M0 8h31M24 1l7 7-7 7"/></svg></div>
+    </div>
+
+    <div class="legenda">Sistema <b>sob medida</b> se adapta à sua rotina,<br>não o contrário.</div>
+  </div>
+  <i class="folha" style="left:-70px;bottom:120px;width:240px" data-rot="-15" data-blur="13"></i>
+</section>
+
+<!-- ======================= 04 · PAINEL ======================= -->
+<section class="slide noite s4">
+  <div class="janela">
+    <div class="titulo">
+      <div class="t-leve">Um sistema junta tudo</div>
+      <div class="t-forte">em um painel só,</div>
+      <div class="t-destaque">da sede ao campo.</div>
+    </div>
+
+    <div class="tablet"><div class="tela">
+      <div class="dash">
+        <aside>
+          <div class="marca"><i></i>Fazenda Aurora</div>
+          <div class="it on">Painel</div><div class="it">Estoque</div><div class="it">Rebanho</div>
+          <div class="it">Safra</div><div class="it">Pedidos</div><div class="it">Financeiro</div><div class="it">Equipe</div>
+        </aside>
+        <main>
+          <div class="top"><div><b>Bom dia, Carlos</b><small>Painel geral · safra 26/27</small></div><span class="av"></span></div>
+          <div class="kpis">
+            <div class="kpi"><small>Ração em estoque</small><b>12,4 t</b><em class="alerta">baixo</em></div>
+            <div class="kpi"><small>Pedidos hoje</small><b>18</b><em class="bom">+4</em></div>
+            <div class="kpi"><small>Animais</small><b>1.240</b><em class="bom">em dia</em></div>
+            <div class="kpi"><small>A receber</small><b>R$ 86 mil</b><em class="bom">30 dias</em></div>
+          </div>
+          <div class="graficos">
+            <div class="graf">Vendas por mês
+              <svg viewBox="0 0 300 120"><defs><linearGradient id="ga" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8FDC55" stop-opacity=".45"/><stop offset="1" stop-color="#8FDC55" stop-opacity="0"/></linearGradient></defs>
+                <path d="M0 95 L40 82 L80 88 L120 60 L160 66 L200 40 L240 46 L300 18 L300 120 L0 120Z" fill="url(#ga)"/>
+                <path d="M0 95 L40 82 L80 88 L120 60 L160 66 L200 40 L240 46 L300 18" fill="none" stroke="#3f8f2a" stroke-width="3.5" stroke-linejoin="round"/>
+              </svg></div>
+            <div class="graf">Produção por talhão
+              <svg viewBox="0 0 180 120"><g fill="#8FDC55"><rect x="8" y="50" width="22" height="70" rx="5"/><rect x="42" y="30" width="22" height="90" rx="5"/><rect x="76" y="62" width="22" height="58" rx="5"/><rect x="110" y="20" width="22" height="100" rx="5" fill="#F4A93C"/><rect x="144" y="44" width="22" height="76" rx="5"/></g></svg></div>
+          </div>
+        </main>
+      </div>
+    </div></div>
+
+    <div class="celular"><div class="ilha"></div><div class="tela">
+      <div class="hora">10:24</div>
+      <div class="push"><div class="ap"><i></i>FAZENDA AURORA · agora</div><b>Estoque de ração baixo</b>Barracão 2 está abaixo do mínimo. Gerar pedido?</div>
+    </div></div>
+  </div>
+  <i class="folha" style="left:-70px;top:380px;width:200px" data-rot="-25" data-blur="14"></i>
+</section>
+
+<!-- ======================= 05 · MÓDULOS ======================= -->
+<section class="slide noite s5">
+  <div class="janela">
+    <div class="titulo">
+      <div class="t-leve">Feito sob medida</div>
+      <div class="t-forte">pro jeito que</div>
+      <div class="t-destaque">você trabalha.</div>
+    </div>
+    <div class="grade">
+      <div class="mod"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 7.5 12 3l9 4.5-9 4.5z"/><path d="M3 7.5v9L12 21l9-4.5v-9"/><path d="M12 12v9"/></svg></div><h6>Estoque</h6><p>entrada, saída e alerta de mínimo</p></div>
+      <div class="mod"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 12V4h8l10 10-7 7z"/><circle cx="7.5" cy="8" r="1.6"/></svg></div><h6>Rebanho</h6><p>lotes, pesagens e vacinas</p></div>
+      <div class="mod"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 21v-9"/><path d="M12 12C12 7.5 9 5 4 5c0 4.5 3 7 8 7z"/><path d="M12 10c0-3.5 3-6 8-6 0 4.5-3 6-8 6z"/></svg></div><h6>Safra</h6><p>talhões, plantio e colheita</p></div>
+      <div class="mod"><div class="ico"><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1M9 10h6M9 14h6M9 18h3"/></svg></div><h6>Pedidos</h6><p>do orçamento à entrega</p></div>
+      <div class="mod"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15 9.2c-.6-1-1.7-1.5-3-1.5-1.7 0-3 .9-3 2.1 0 2.8 6 1.5 6 4.3 0 1.2-1.3 2.2-3 2.2-1.4 0-2.6-.6-3.1-1.6M12 6v1.7M12 16.3V18"/></svg></div><h6>Financeiro</h6><p>contas a pagar e a receber</p></div>
+      <div class="mod"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.6"/><path d="M16 14.2c2.8.2 5 2.6 5 5.8"/></svg></div><h6>Equipe</h6><p>tarefas e acesso por usuário</p></div>
+    </div>
+    <div class="nota-mao" style="position:absolute;left:0;right:0;bottom:92px;text-align:center;color:var(--lima);opacity:.6;transform:rotate(-2deg);z-index:9">e o que mais a sua operação precisar →</div>
+  </div>
+  <i class="folha" style="right:-80px;top:260px;width:230px" data-rot="200" data-blur="13"></i>
+</section>
+
+<!-- ======================= 06 · CTA ======================= -->
+<section class="slide noite s6">
+  <div class="janela">
+    <div class="titulo">
+      <div class="t-leve">Bora tirar a sua gestão</div>
+      <div class="t-destaque">do caderno?</div>
+    </div>
+    <div class="banner"><img src="../assets/logo/agricode-banner.jpg" alt="AgriCode"></div>
+    <div class="comenta">
+      <div class="linha1">Comenta <span class="palavra">SISTEMA</span></div>
+      <div class="linha2">que a gente te mostra como funciona.</div>
+    </div>
+    <div class="rodape-mini">@agricodeagencia · criação de sites e sistemas para o agronegócio</div>
+  </div>
+  <i class="folha" style="left:-70px;top:330px;width:220px" data-rot="-25" data-blur="13"></i>
+  <i class="folha" style="right:-90px;bottom:170px;width:300px" data-rot="165" data-blur="12"></i>
+</section>
+
+<script src="../base/agricode.js"></script>
+</body>
+</html>
