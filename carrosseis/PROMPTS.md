@@ -5,8 +5,10 @@ Este documento traz:
 2. **como** cada um foi adaptado para a AgriCode;
 3. o **prompt mestre** para pedir novos carrosséis ao Claude;
 4. **prompts por modelo** (é só preencher os campos);
-5. **prompts de imagem**, se quiser usar fotos geradas por IA;
-6. as **legendas** prontas dos 3 posts.
+5. **prompts de imagem**, se quiser trocar as fotos por imagens geradas por IA;
+6. as **legendas** prontas dos 3 posts;
+7. a **receita de realismo** (fotos reais, luz, sombra, sobreposição e "pixelzinhos");
+8. os **créditos das fotos**.
 
 > Foi aproveitada a estrutura visual dos modelos, não a identidade de outra agência. Cores, logo, textos, mascote e assinatura são da AgriCode.
 
@@ -61,7 +63,7 @@ Este documento traz:
 | Card genérico | **janela de navegador** com os 3 pontinhos |
 | — | **barra de rolagem** à direita que mostra em que slide você está |
 | Flores/abelhas desfocadas | **folhas da logo** desfocadas |
-| Fotos de animais geradas por IA | **mockups de sites e sistemas** feitos em código (é o que a AgriCode vende) |
+| Fotos de animais geradas por IA | **fotos reais do agro** (nelore, soja ao pôr do sol, cadeado, mesa de madeira) recortadas e integradas com luz, junto com **mockups de sites e sistemas** |
 | Laranja/âmbar | verde-lima da logo + âmbar do pôr do sol do banner |
 
 **Os 3 modelos:**
@@ -219,6 +221,8 @@ Um site profissional é feito em camadas (hospedagem, código, design, conteúdo
 Comenta "SITE" que a gente te chama no direct.
 
 #agronegocio #agro #criacaodesites #marketingagro #tecnologianoagro #agricode
+
+📷 Fotos (editadas): United Soybean Board, agriculturasp, Jeff Weese e Natalka Ukraine, via Wikimedia Commons (CC BY 2.0/4.0).
 ```
 
 **Post 2 · Sistemas**
@@ -231,6 +235,8 @@ Um sistema sob medida junta tudo num painel só, da sede ao campo.
 Comenta "SISTEMA" que a gente te mostra como funciona.
 
 #agronegocio #gestaorural #sistemas #agrotech #tecnologianoagro #agricode
+
+📷 Fotos (editadas): Trougnouf, United Soybean Board, agriculturasp e Jeff Weese, via Wikimedia Commons (CC BY 2.0/4.0).
 ```
 
 **Post 3 · Glossário do site**
@@ -242,4 +248,49 @@ Separamos os 5 termos que todo dono de negócio do agro precisa entender antes d
 Salva pra consultar depois e manda pra quem precisa ver.
 
 #agronegocio #agro #site #marketingdigital #tecnologianoagro #agricode
+
+📷 Fotos (editadas): United Soybean Board, agriculturasp, Jeff Weese, R. Henrik Nilsson e Natalka Ukraine, via Wikimedia Commons (CC BY 2.0/4.0).
 ```
+
+---
+
+## 7. Receita de realismo (o que faz parecer foto de verdade)
+
+Cada slide é montado em camadas, de trás para frente:
+
+| # | Camada | Como foi feito | Arquivo/classe |
+|---|---|---|---|
+| 1 | **Foto de fundo** | foto real com tratamento de cor (brilho, contraste, sépia), às vezes desfocada para dar profundidade | `.foto-fundo` / `.foto-fundo.textura` |
+| 2 | **Véus** | gradiente escuro no topo (para o título), vinheta nas bordas, brilho de pôr do sol ou tinta de cor (petróleo) | `.veu.topo-escuro`, `.veu.vinheta`, `.veu.brilho-sol`, `.veu.tinta-petroleo` |
+| 3 | **Contraluz** | mancha de luz quente atrás do objeto principal | `.contraluz`, `.luz-obj` |
+| 4 | **Palavra gigante** | fonte condensada com brilho e leve desfoque | `.gigante`, `.palavra` |
+| 5 | **Objeto recortado na frente** | foto sem fundo (rembg) + luz de borda + sombra de contato | `ferramentas/recortar_fundo.py`, `ferramentas/luz_de_borda.py`, `.recorte` |
+| 6 | **Primeiro plano** | pedaço de foto desfocado na frente de tudo (soja, folhas) | `.frente-soja`, `.folha` |
+| 7 | **UI flutuante** | barra de busca/cards com sombra longa e borda clara | `.busca-flutua`, `.chip` |
+| 8 | **Pixelzinhos** | retícula de pontos (meio-tom) + linhas finas + granulado por cima de tudo | `.janela::before` e `.janela::after` |
+
+**Passo a passo para trocar a foto principal:**
+1. Ache a foto (Wikimedia Commons, Unsplash, Pexels ou gerada por IA). Prefira fundo simples e luz parecida com a do slide.
+2. Tire o fundo: `python ferramentas/recortar_fundo.py isnet-general-use foto.jpg recorte.png`
+3. Aplique a luz de borda do lado de onde vem a luz da cena: `python ferramentas/luz_de_borda.py recorte.png assets/fotos/novo.png direita 0.9`
+4. Troque o `src` da imagem no slide e ajuste `left/top/width`. Deixe parte do objeto **na frente da palavra gigante** e parte **atrás de um primeiro plano** (é isso que dá a sensação de profundidade).
+
+**Prompt de realismo (para pedir ao Claude ou a um designer):**
+```text
+Monte o slide em camadas: foto real de fundo com cor tratada e levemente desfocada;
+véu escuro no topo para o título; luz quente atrás do objeto principal;
+palavra gigante condensada; objeto real recortado NA FRENTE da palavra, com luz de borda
+vinda da mesma direção do sol do fundo e sombra de contato no chão;
+um elemento desfocado em primeiro plano cobrindo a base do objeto;
+por cima de tudo, retícula de pontinhos (meio-tom) e granulado sutil.
+As cores do objeto precisam combinar com a luz do fundo (pôr do sol = mais quente e escuro).
+```
+
+---
+
+## 8. Créditos das fotos
+
+As fotos são do **Wikimedia Commons**, com licenças que permitem uso comercial (CC0, domínio público ou CC BY).
+Licenças **CC BY** pedem crédito: as legendas da seção 6 já trazem a linha de créditos, e a lista completa está em [`assets/fotos/CREDITOS.md`](assets/fotos/CREDITOS.md).
+As fotos foram recortadas, recoloridas e combinadas (isso conta como modificação, e o crédito informa isso).
+

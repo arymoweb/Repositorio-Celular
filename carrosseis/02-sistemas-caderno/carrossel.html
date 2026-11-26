@@ -173,6 +173,20 @@
   box-shadow: 0 0 50px rgba(143, 220, 85, .45);
 }
 .comenta .linha2 { margin-top: 22px; font-size: 38px; color: rgba(255, 255, 255, .78); }
+
+/* realismo: luz de luminária sobre a mesa e textura de papel */
+.luminaria { position: absolute; inset: 0; z-index: 2; pointer-events: none; mix-blend-mode: screen;
+  background: radial-gradient(55% 45% at var(--lx, 52%) var(--ly, 72%), rgba(255, 196, 120, .42), rgba(255, 160, 80, .12) 55%, transparent 75%); }
+.caderno { box-shadow: 0 60px 90px rgba(0, 0, 0, .75), 0 10px 20px rgba(0, 0, 0, .35), 12px 12px 0 -4px #e3dccb, 22px 22px 0 -8px #d5cdb9 !important; }
+.caderno::after {
+  content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 3;
+  background:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='p'><feTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3'/><feColorMatrix values='0 0 0 0 .45  0 0 0 0 .4  0 0 0 0 .32  0 0 0 .35 0'/></filter><rect width='300' height='300' filter='url(%23p)'/></svg>"),
+    linear-gradient(118deg, rgba(255, 245, 225, .0) 0%, rgba(0, 0, 0, .0) 45%, rgba(60, 40, 20, .22) 100%),
+    linear-gradient(rgba(0, 0, 0, .18), transparent 12%);
+  mix-blend-mode: multiply;
+}
+.cartao { box-shadow: 0 40px 70px rgba(0, 0, 0, .7), 0 8px 16px rgba(0, 0, 0, .35); }
 </style>
 </head>
 <body>
@@ -180,6 +194,10 @@
 <!-- ======================= 01 · CAPA ======================= -->
 <section class="slide noite capa">
   <div class="janela">
+    <div class="foto-fundo" style="--pos:62% 48%;--zoom:1.05;--foto-filtro:brightness(.55) saturate(1.05) contrast(1.12) sepia(.15)"><img src="../assets/fotos/mesa-madeira.jpg" alt=""></div>
+    <div class="veu topo-escuro"></div>
+    <div class="veu vinheta"></div>
+    <div class="luminaria"></div>
     <div class="k">sua <span class="serif">gestão</span> ainda roda no</div>
     <div class="palavra-grande"><span class="script">C</span><span class="cond">ADERNO<span class="q">?</span></span></div>
 
@@ -208,6 +226,10 @@
 <!-- ======================= 02 · CAOS ======================= -->
 <section class="slide noite s2">
   <div class="janela">
+    <div class="foto-fundo" style="--pos:0% 50%;--zoom:2;--foto-filtro:brightness(.45) saturate(1.05) contrast(1.1) sepia(.15)"><img src="../assets/fotos/mesa-madeira.jpg" alt=""></div>
+    <div class="veu topo-escuro"></div>
+    <div class="veu vinheta"></div>
+    <div class="luminaria" style="--lx:50%;--ly:68%"></div>
     <div class="titulo">
       <div class="t-leve">Pode parecer exagero, mas</div>
       <div class="t-forte">informação espalhada</div>
@@ -240,6 +262,10 @@
 <!-- ======================= 03 · ANTES x DEPOIS ======================= -->
 <section class="slide noite s3">
   <div class="janela">
+    <div class="foto-fundo textura" style="--foto-filtro:brightness(.48) saturate(1) contrast(1.12)"><img src="../assets/fotos/ceu-dramatico-soja.jpg" alt=""></div>
+    <div class="veu topo-escuro"></div>
+    <div class="veu vinheta"></div>
+    <div class="veu brilho-verde"></div>
     <div class="titulo">
       <div class="t-leve">Mesma fazenda,</div>
       <div class="t-forte">outro nível</div>
@@ -276,6 +302,10 @@
 <!-- ======================= 04 · PAINEL ======================= -->
 <section class="slide noite s4">
   <div class="janela">
+    <div class="foto-fundo textura" style="--foto-filtro:brightness(.48) saturate(1) contrast(1.12)"><img src="../assets/fotos/nelore-pasto.jpg" alt=""></div>
+    <div class="veu topo-escuro"></div>
+    <div class="veu vinheta"></div>
+    <div class="veu brilho-verde"></div>
     <div class="titulo">
       <div class="t-leve">Um sistema junta tudo</div>
       <div class="t-forte">em um painel só,</div>
@@ -321,6 +351,10 @@
 <!-- ======================= 05 · MÓDULOS ======================= -->
 <section class="slide noite s5">
   <div class="janela">
+    <div class="foto-fundo textura" style="--foto-filtro:brightness(.48) saturate(1) contrast(1.12)"><img src="../assets/fotos/soja-primeiro-plano.jpg" alt=""></div>
+    <div class="veu topo-escuro"></div>
+    <div class="veu vinheta"></div>
+    <div class="veu brilho-verde"></div>
     <div class="titulo">
       <div class="t-leve">Feito sob medida</div>
       <div class="t-forte">pro jeito que</div>
@@ -342,6 +376,10 @@
 <!-- ======================= 06 · CTA ======================= -->
 <section class="slide noite s6">
   <div class="janela">
+    <div class="foto-fundo textura" style="--foto-filtro:brightness(.48) saturate(1) contrast(1.12)"><img src="../assets/fotos/soja-por-do-sol-ceu.jpg" alt=""></div>
+    <div class="veu topo-escuro"></div>
+    <div class="veu vinheta"></div>
+    <div class="veu brilho-verde"></div>
     <div class="titulo">
       <div class="t-leve">Bora tirar a sua gestão</div>
       <div class="t-destaque">do caderno?</div>

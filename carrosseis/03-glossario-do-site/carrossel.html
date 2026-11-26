@@ -56,7 +56,7 @@
   background: linear-gradient(rgba(250, 205, 130, .85) 0%, rgba(240, 190, 110, .35) 7%, transparent 22%, transparent 60%, rgba(5, 15, 8, .55));
 }
 .capa .script-acento {
-  position: absolute; left: 92px; top: 790px; z-index: 12; transform: rotate(-6deg);
+  position: absolute; left: 92px; top: 860px; z-index: 12; transform: rotate(-6deg);
   font-family: var(--f-script); font-size: 124px; color: #fff; text-shadow: 0 4px 24px rgba(0, 0, 0, .6), 0 0 2px rgba(0, 0, 0, .3);
 }
 .tag-code {
@@ -159,6 +159,34 @@
 .salva .grande svg { width: 54px; height: 64px; }
 .salva .peq { margin-top: 12px; font-size: 38px; color: var(--txt-2); }
 .salva .peq .serif { color: #C2690E; font-size: 46px; }
+
+/* capa com fotos reais: céu do pôr do sol + lavoura recortada no horizonte */
+.ceu-foto { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+.ceu-foto img { position: absolute; left: 50%; top: -40px; height: 1080px; transform: translateX(-46%); filter: saturate(1.15) contrast(1.06) brightness(.92); }
+.ceu-foto::after { content: ''; position: absolute; inset: 0; background: linear-gradient(rgba(10, 20, 30, .55), transparent 35%); }
+.sol-horizonte { position: absolute; left: 140px; top: 640px; width: 800px; height: 300px; z-index: 2; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(255, 200, 120, .95), rgba(255, 140, 70, .35) 55%, transparent); filter: blur(24px); }
+.capa .site-gigante { top: 318px; color: #fff; background: linear-gradient(#ffffff 40%, #ffe3c4 75%, #ffc9a0);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  text-shadow: none; filter: drop-shadow(0 0 30px rgba(255, 220, 190, .55)) drop-shadow(0 18px 40px rgba(60, 30, 40, .4)); }
+.nevoa { position: absolute; left: -40px; right: -40px; top: 752px; height: 90px; z-index: 7;
+  background: linear-gradient(transparent, rgba(255, 214, 180, .55) 55%, transparent); filter: blur(10px); }
+.horizonte-foto { position: absolute; left: 0; right: 0; top: 770px; bottom: 0; z-index: 8; overflow: hidden; }
+.horizonte-foto img { position: absolute; left: 50%; top: -10px; width: 1600px; transform: translateX(-52%);
+  filter: brightness(.66) saturate(1.12) sepia(.22) contrast(1.08); }
+.horizonte-foto::after { content: ''; position: absolute; inset: 0; background: linear-gradient(rgba(255, 170, 110, .18), transparent 30%, rgba(4, 10, 6, .55)); }
+
+/* objetos reais recortados */
+.luz-obj { position: absolute; z-index: 5; border-radius: 50%; filter: blur(40px); background: radial-gradient(closest-side, rgba(255, 210, 140, .55), transparent); }
+.cadeado-foto { left: 50%; top: 548px; width: 470px; margin-left: -205px; transform: rotate(-8deg);
+  filter: contrast(1.08) saturate(1.1) drop-shadow(0 0 2px rgba(255, 230, 180, .6)) drop-shadow(0 34px 40px rgba(0, 0, 0, .6)); }
+
+.veu.tinta-petroleo { background: linear-gradient(#155250, #0A2324); mix-blend-mode: color; opacity: .9; }
+.petroleo .foto-fundo.textura { opacity: .85; }
+.petroleo .veu.vinheta { background: radial-gradient(120% 90% at 50% 40%, transparent 30%, rgba(4, 18, 18, .8) 100%); }
+
+.palha .foto-fundo.nuvens { mix-blend-mode: multiply; opacity: .32; -webkit-mask: linear-gradient(#000 0%, #000 40%, transparent 75%); mask: linear-gradient(#000 0%, #000 40%, transparent 75%); }
+.palha .foto-fundo.nuvens img { object-position: 50% 0%; filter: grayscale(1) sepia(.5) contrast(1.25) brightness(1.35); transform: scale(1.3); transform-origin: 50% 0; }
 </style>
 </head>
 <body>
@@ -167,8 +195,11 @@
 <section class="slide ceu capa" data-particulas="18">
   <div class="janela">
     <div class="k">5 termos pra você <span class="serif">entender</span> o seu</div>
+    <div class="ceu-foto"><img src="../assets/fotos/soja-por-do-sol-ceu.jpg" alt=""></div>
+    <div class="sol-horizonte"></div>
     <div class="site-gigante">SITE</div>
-    <div class="campo"></div>
+    <div class="nevoa"></div>
+    <div class="horizonte-foto"><img src="../assets/fotos/lavoura-horizonte.webp" alt=""></div>
     <div class="script-acento">sem complicação</div>
     <div class="cursor"></div>
     <div class="tag-code">&lt;/&gt; agricode</div>
@@ -181,6 +212,9 @@
 <!-- ======================= 02 · INTRO ======================= -->
 <section class="slide petroleo s2">
   <div class="janela">
+    <div class="foto-fundo textura" style="--foto-filtro:brightness(.5) contrast(1.15)"><img src="../assets/fotos/ceu-dramatico-soja.jpg" alt=""></div>
+    <div class="veu tinta-petroleo"></div>
+    <div class="veu vinheta"></div>
     <div class="intro">
       <div class="vocativo">Produtor,</div>
       <div class="frase">site bom vende por você<br><span class="serif">enquanto</span> você tá no campo.</div>
@@ -201,6 +235,7 @@
 <!-- ======================= 03 · DOMÍNIO ======================= -->
 <section class="slide palha claro termo">
   <div class="janela">
+    <div class="foto-fundo textura nuvens"><img src="../assets/fotos/soja-por-do-sol-ceu.jpg" alt=""></div>
     <div class="topo-txt">
       <div class="kicker-mono">termo 1 de 5</div>
       <div class="linha">O <span class="serif">endereço</span> da sua empresa<br>na internet.</div>
@@ -219,6 +254,9 @@
 <!-- ======================= 04 · HOSPEDAGEM ======================= -->
 <section class="slide petroleo termo">
   <div class="janela">
+    <div class="foto-fundo textura" style="--foto-filtro:brightness(.5) contrast(1.15)"><img src="../assets/fotos/nelore-pasto.jpg" alt=""></div>
+    <div class="veu tinta-petroleo"></div>
+    <div class="veu vinheta"></div>
     <div class="topo-txt">
       <div class="kicker-mono">termo 2 de 5</div>
       <div class="linha">O <span class="serif">terreno</span> onde o seu site<br>fica guardado.</div>
@@ -235,6 +273,7 @@
 <!-- ======================= 05 · SEO ======================= -->
 <section class="slide palha claro termo">
   <div class="janela">
+    <div class="foto-fundo textura nuvens"><img src="../assets/fotos/soja-por-do-sol-ceu.jpg" alt=""></div>
     <div class="topo-txt">
       <div class="kicker-mono">termo 3 de 5</div>
       <div class="linha">O que faz o Google<br><span class="serif">te encontrar</span> primeiro.</div>
@@ -253,17 +292,16 @@
 <!-- ======================= 06 · SSL ======================= -->
 <section class="slide petroleo termo">
   <div class="janela">
+    <div class="foto-fundo textura" style="--foto-filtro:brightness(.5) contrast(1.15)"><img src="../assets/fotos/soja-por-do-sol-ceu.jpg" alt=""></div>
+    <div class="veu tinta-petroleo"></div>
+    <div class="veu vinheta"></div>
     <div class="topo-txt">
       <div class="kicker-mono">termo 4 de 5</div>
       <div class="linha">O <span class="serif">cadeado</span> que mostra<br>que o site é seguro.</div>
     </div>
     <div class="palavra" style="font-size:440px;top:500px">SSL</div>
-    <svg class="obj cadeado" viewBox="0 0 120 150">
-      <defs><linearGradient id="cad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C8F59A"/><stop offset="1" stop-color="#5FAE34"/></linearGradient></defs>
-      <path d="M30 66V44a30 30 0 0 1 60 0v22" fill="none" stroke="#E9EFEA" stroke-width="13" stroke-linecap="round"/>
-      <rect x="10" y="62" width="100" height="82" rx="20" fill="url(#cad)"/>
-      <circle cx="60" cy="98" r="10" fill="#14300b"/><rect x="56" y="100" width="8" height="22" rx="4" fill="#14300b"/>
-    </svg>
+    <div class="luz-obj" style="left:290px;top:560px;width:500px;height:420px"></div>
+    <img class="obj cadeado-foto" src="../assets/fotos/cadeado-recorte.webp" alt="">
     <div class="obj https">https://<s>http://</s></div>
     <div class="legenda"><b>SSL</b> · sem ele, o navegador avisa<br>“não seguro” pro seu cliente.</div>
     <div class="nota-mao" style="right:70px;bottom:auto;top:600px;transform:rotate(-8deg);text-align:center;line-height:1">hoje é<br>obrigatório</div>
@@ -275,15 +313,16 @@
 <!-- ======================= 07 · RESPONSIVO ======================= -->
 <section class="slide palha claro termo">
   <div class="janela">
+    <div class="foto-fundo textura nuvens"><img src="../assets/fotos/soja-por-do-sol-ceu.jpg" alt=""></div>
     <div class="topo-txt">
       <div class="kicker-mono">termo 5 de 5</div>
       <div class="linha">O site que <span class="serif">se ajusta</span><br>a qualquer tela.</div>
     </div>
     <div class="palavra" style="font-size:236px;top:500px">RESPONSIVO</div>
     <div class="obj aparelhos">
-      <div class="ap-note"><div class="mini" style="--cols:4"><div class="h ceu-sol"><div class="lavoura" style="height:45%"></div></div><div class="l" style="width:60%"></div><div class="l c"></div><div class="g"><i></i><i></i><i></i><i></i></div></div></div>
-      <div class="ap-tab"><div class="mini" style="--cols:2"><div class="h ceu-sol"><div class="lavoura" style="height:45%"></div></div><div class="l" style="width:70%"></div><div class="l c"></div><div class="g"><i></i><i></i><i></i><i></i></div></div></div>
-      <div class="ap-cel"><div class="mini" style="--cols:1;gap:6px;padding:6px"><div class="h ceu-sol" style="flex-basis:34%"><div class="lavoura" style="height:45%"></div></div><div class="l" style="width:80%"></div><div class="l c" style="width:60%"></div><div class="g"><i></i><i></i></div></div></div>
+      <div class="ap-note"><div class="mini" style="--cols:4"><div class="h" style="background:url(../assets/fotos/lavoura-produtor-por-do-sol.jpg) 60% 35%/cover"></div><div class="l" style="width:60%"></div><div class="l c"></div><div class="g"><i style="background:url(../assets/fotos/soja-primeiro-plano.jpg) 30% 60%/300%"></i><i style="background:url(../assets/fotos/nelore-pasto.jpg) 64% 52%/340%"></i><i style="background:url(../assets/fotos/abelha-girassol.jpg) 50% 45%/180%"></i><i style="background:url(../assets/fotos/ceu-dramatico-soja.jpg) 50% 60%/300%"></i></div></div></div>
+      <div class="ap-tab"><div class="mini" style="--cols:2"><div class="h" style="background:url(../assets/fotos/lavoura-produtor-por-do-sol.jpg) 60% 35%/cover"></div><div class="l" style="width:70%"></div><div class="l c"></div><div class="g"><i style="background:url(../assets/fotos/soja-primeiro-plano.jpg) 30% 60%/300%"></i><i style="background:url(../assets/fotos/nelore-pasto.jpg) 64% 52%/340%"></i><i style="background:url(../assets/fotos/abelha-girassol.jpg) 50% 45%/180%"></i><i style="background:url(../assets/fotos/ceu-dramatico-soja.jpg) 50% 60%/300%"></i></div></div></div>
+      <div class="ap-cel"><div class="mini" style="--cols:1;gap:6px;padding:6px"><div class="h" style="flex-basis:34%;background:url(../assets/fotos/lavoura-produtor-por-do-sol.jpg) 60% 35%/cover"></div><div class="l" style="width:80%"></div><div class="l c" style="width:60%"></div><div class="g"><i style="background:url(../assets/fotos/soja-primeiro-plano.jpg) 30% 60%/300%"></i><i style="background:url(../assets/fotos/nelore-pasto.jpg) 64% 52%/340%"></i></div></div></div>
     </div>
     <div class="legenda" style="bottom:140px"><b>Responsivo</b> · no celular, no tablet<br>ou no computador, sem quebrar nada.</div>
     <div class="rodape-mini">agricode · sites e sistemas para o agronegócio</div>
@@ -293,6 +332,7 @@
 <!-- ======================= 08 · CTA ======================= -->
 <section class="slide palha claro s8">
   <div class="janela">
+    <div class="foto-fundo textura nuvens"><img src="../assets/fotos/soja-por-do-sol-ceu.jpg" alt=""></div>
     <div class="titulo" style="top:190px">
       <div class="t-leve">Agora você já fala</div>
       <div class="t-forte">a língua do <span class="serif ambar-escuro" style="font-size:92px">digital.</span></div>

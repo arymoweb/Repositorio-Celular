@@ -22,10 +22,12 @@ carrosseis/
 │   └── agricode.js      ← monta topo, contador, números de linha, partículas, folhas e lavoura
 ├── assets/
 │   ├── logo/            ← logo recortada (PNG transparente) + banner original
+│   ├── fotos/           ← fotos reais (Wikimedia Commons) e recortes; créditos em fotos/CREDITOS.md
 │   └── fonts/           ← fontes gratuitas (OFL) usadas nos slides
 ├── 01-sites-em-camadas/carrossel.html
 ├── 02-sistemas-caderno/carrossel.html
 ├── 03-glossario-do-site/carrossel.html
+├── ferramentas/         ← buscar/baixar fotos, recortar fundo (rembg) e aplicar luz de borda
 ├── render.cjs           ← exporta os PNGs
 └── PROMPTS.md           ← análise dos modelos, prompt mestre, prompts de imagem e legendas
 ```
@@ -43,6 +45,10 @@ node carrosseis/render.cjs 02     # só o carrossel 02
 ```
 
 Para criar um carrossel novo, copie uma das pastas, renomeie (ex.: `04-loja-virtual`) e use o prompt mestre do [PROMPTS.md](PROMPTS.md).
+
+## Fotos
+
+As fotos são reais, do Wikimedia Commons, com licença que permite uso comercial. As licenças CC BY pedem crédito ao autor, e as legendas do [PROMPTS.md](PROMPTS.md) já trazem a linha de créditos. A lista completa está em [`assets/fotos/CREDITOS.md`](assets/fotos/CREDITOS.md).
 
 ## Licenças das fontes
 

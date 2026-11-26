@@ -37,7 +37,9 @@
   font-family: var(--f-serif); font-style: italic; font-size: 80px; line-height: .98; color: var(--ambar-2);
   text-shadow: 0 6px 30px rgba(0, 0, 0, .6), 0 0 40px rgba(244, 169, 60, .35);
 }
-.capa .arrasta { right: auto; left: 84px; bottom: 84px; }
+.capa .arrasta { bottom: 78px; }
+.capa .frase { left: 70px; top: 1066px; font-size: 70px; z-index: 13; }
+.frente-soja { position: absolute; left: -40px; right: -40px; bottom: -20px; height: 300px; z-index: 11; background: url(../assets/fotos/soja-primeiro-plano.jpg) center 20% / cover; filter: blur(2.5px) brightness(.55) saturate(1.15) sepia(.2); -webkit-mask: linear-gradient(transparent, #000 45%); mask: linear-gradient(transparent, #000 45%); }
 
 /* tela de busca dentro do celular */
 .busca { background: #F6F7F5; height: 100%; font-family: var(--f-sans); color: #1b1f1c; }
@@ -170,54 +172,74 @@
   box-shadow: 0 0 50px rgba(244, 169, 60, .5);
 }
 .comenta .linha2 { margin-top: 22px; font-size: 38px; color: rgba(255, 255, 255, .78); }
+
+/* capa com foto real: boi recortado na frente da palavra */
+.capa .gigante { top: 214px; }
+.capa .k1 { top: 172px; }
+.boi { position: absolute; left: 70px; top: 405px; width: 900px; height: 833px; z-index: 9; }
+.boi img { position: absolute; inset: 0; width: 100%; height: 100%;
+  filter: sepia(.14) saturate(1.08) contrast(1.08) brightness(.9)
+          drop-shadow(0 0 18px rgba(255, 168, 60, .28)) drop-shadow(0 30px 40px rgba(0,0,0,.6)); }
+.chao { position: absolute; left: 120px; top: 1110px; width: 860px; height: 110px; z-index: 8; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(0, 0, 0, .75), transparent); filter: blur(10px); }
+.busca-flutua {
+  position: absolute; left: 380px; top: 845px; z-index: 12; transform: rotate(3deg);
+  display: flex; align-items: center; gap: 16px; padding: 22px 34px 22px 26px; border-radius: 60px;
+  background: rgba(255, 255, 255, .94); color: #1f2a22; font-size: 30px; font-weight: 500; letter-spacing: -.4px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, .5), 0 0 0 1px rgba(255,255,255,.6), 0 0 60px rgba(255, 180, 90, .25);
+}
+.busca-flutua svg { width: 34px; height: 34px; }
+.busca-flutua .caret { width: 3px; height: 34px; background: #2e7d32; margin-left: -6px; }
+
+.site .s-hero.com-foto { background-size: cover; }
+.site .s-hero.com-foto::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(160deg, rgba(0,0,0,.55), rgba(0,0,0,.05) 60%, rgba(0,0,0,.35)); }
+.site .s-grid div i { background-size: cover; }
 </style>
 </head>
 <body>
 
 <!-- ======================= 01 · CAPA ======================= -->
-<section class="slide sol capa">
+<section class="slide sol capa" data-particulas="40">
   <div class="janela">
+    <div class="foto-fundo desfocada" style="--pos:62% 100%;--desfoque:3px;--foto-filtro:saturate(1.2) contrast(1.12) brightness(.7)">
+      <img src="../assets/fotos/soja-por-do-sol-ceu.jpg" alt="">
+    </div>
+    <div class="veu topo-escuro"></div>
+    <div class="veu topo-escuro"></div>
+    <div class="veu vinheta"></div>
+    <div class="veu brilho-sol"></div>
+    <div class="contraluz" style="left:420px;top:330px;width:720px;height:620px"></div>
+
     <div class="kicker k1">Seu cliente <span class="ambar">pesquisa no</span></div>
     <div class="gigante borrao">GOOGLE</div>
     <div class="gigante">GOOGLE</div>
 
-    <div class="celular">
-      <div class="ilha"></div>
-      <div class="tela busca">
-        <div class="status"><span>9:41</span><span>●●● ▮</span></div>
-        <div class="campo">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.6"><circle cx="10" cy="10" r="7"/><path d="M15.5 15.5 22 22"/></svg>
-          revenda de insumos perto de mim
-        </div>
-        <div class="abas"><span>Tudo</span><span>Mapas</span><span>Imagens</span><span>Notícias</span></div>
-        <div class="mapa"><i style="left:22%;top:30%"></i><i style="left:58%;top:52%"></i><i style="left:76%;top:22%"></i></div>
-        <div class="resultado">
-          <h5>Agro Concorrente</h5>
-          <p><span class="estrelas">★★★★★</span> 4,8 · Aberto agora</p>
-          <div class="acoes"><span>Site</span><span>Rotas</span><span>Ligar</span></div>
-        </div>
-        <div class="resultado">
-          <h5>Casa do Produtor</h5>
-          <p><span class="estrelas">★★★★☆</span> 4,6 · Fecha às 18h</p>
-          <div class="acoes"><span>Site</span><span>Rotas</span><span>Ligar</span></div>
-        </div>
-        <div class="resultado falta">
-          <h5>E a sua empresa?</h5>
-          <p>não aparece por aqui…</p>
-        </div>
-      </div>
+    <div class="chao"></div>
+    <div class="boi">
+      <img class="recorte" src="../assets/fotos/boi-nelore-recorte.webp" alt="">
+    </div>
+
+    <div class="frente-soja"></div>
+    <div class="busca-flutua">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.8"><circle cx="10" cy="10" r="7"/><path d="M15.5 15.5 22 22"/></svg>
+      revenda de insumos perto de mim<span class="caret"></span>
     </div>
 
     <div class="frase">e acha o seu<br>concorrente.</div>
     <div class="arrasta">arrasta pro lado <svg viewBox="0 0 34 16" fill="none" stroke="#fff" stroke-width="2.4"><path d="M0 8h31M24 1l7 7-7 7"/></svg></div>
+    <div class="vazamento" style="right:-160px;top:380px;width:520px;height:520px"></div>
   </div>
-  <i class="folha" style="left:-70px;bottom:40px;width:300px" data-rot="-18" data-blur="12"></i>
+  <i class="folha" style="left:-120px;bottom:-30px;width:300px" data-rot="-18" data-blur="14"></i>
   <i class="folha" style="right:-60px;top:150px;width:200px" data-rot="160" data-blur="16"></i>
 </section>
 
 <!-- ======================= 02 · CAMADAS ======================= -->
 <section class="slide sol s2">
   <div class="janela">
+    <div class="foto-fundo textura" style="--foto-filtro:brightness(.38) saturate(1.15) sepia(.25) contrast(1.1)"><img src="../assets/fotos/ceu-dramatico-soja.jpg" alt=""></div>
+    <div class="veu topo-escuro"></div>
+    <div class="veu vinheta"></div>
+    <div class="veu brilho-sol"></div>
     <div class="titulo">
       <div class="t-leve">Parece só uma página,</div>
       <div class="t-forte">mas um site profissional</div>
@@ -245,7 +267,7 @@
         <div class="bloco" style="left:36px;top:258px;width:368px;height:46px"></div>
       </div>
       <div class="camada c4">
-        <div class="foto ceu-sol"><div class="lavoura" style="height:50%"></div></div>
+        <div class="foto" style="background:url(../assets/fotos/lavoura-produtor-por-do-sol.jpg) 60% 30%/cover"></div>
         <div class="linha-txt" style="left:256px;top:44px;width:150px"></div>
         <div class="linha-txt" style="left:256px;top:72px;width:120px"></div>
         <div class="linha-txt" style="left:256px;top:100px;width:140px"></div>
@@ -277,6 +299,10 @@
 <!-- ======================= 03 · NO CELULAR ======================= -->
 <section class="slide sol s3">
   <div class="janela">
+    <div class="foto-fundo textura" style="--foto-filtro:brightness(.38) saturate(1.15) sepia(.25) contrast(1.1)"><img src="../assets/fotos/lavoura-produtor-por-do-sol.jpg" alt=""></div>
+    <div class="veu topo-escuro"></div>
+    <div class="veu vinheta"></div>
+    <div class="veu brilho-sol"></div>
     <div class="titulo">
       <div class="t-leve">Não basta ser bonito, tem que</div>
       <div class="t-forte">funcionar no celular,</div>
@@ -289,17 +315,16 @@
         <div class="site" style="--c:#F4A93C">
           <div class="status"><span>9:41</span><span>●●● ▮</span></div>
           <div class="s-nav"><b>Campo<i>Forte</i></b><span></span></div>
-          <div class="s-hero ceu-sol">
-            <div class="lavoura" style="height:42%"></div>
+          <div class="s-hero com-foto" style="background-image:url(../assets/fotos/lavoura-produtor-por-do-sol.jpg);background-position:62% 30%">
             <h4>Insumos com entrega na sua fazenda</h4>
             <span class="s-btn">Pedir orçamento →</span>
           </div>
           <div class="s-sec">Nossos produtos</div>
           <div class="s-grid">
-            <div><i style="--g:linear-gradient(135deg,#d9b46a,#8d6b2f)"></i>Sementes</div>
-            <div><i style="--g:linear-gradient(135deg,#9cc46a,#4d7a2a)"></i>Fertilizantes</div>
-            <div><i style="--g:linear-gradient(135deg,#7fb0c9,#3d6a80)"></i>Irrigação</div>
-            <div><i style="--g:linear-gradient(135deg,#c98f6a,#7a4a2f)"></i>Nutrição animal</div>
+            <div><i style="--g:url(../assets/fotos/soja-primeiro-plano.jpg) 30% 70%/260%"></i>Sementes</div>
+            <div><i style="--g:url(../assets/fotos/nelore-pasto.jpg) 64% 52%/300%"></i>Nutrição animal</div>
+            <div><i style="--g:url(../assets/fotos/abelha-girassol.jpg) 50% 45%/150%"></i>Apicultura</div>
+            <div><i style="--g:url(../assets/fotos/lavoura-produtor-por-do-sol.jpg) 74% 30%/700%"></i>Armazenagem</div>
           </div>
           <div class="s-zap"></div>
         </div>
@@ -318,6 +343,10 @@
 <!-- ======================= 04 · LEQUE ======================= -->
 <section class="slide sol s4">
   <div class="janela">
+    <div class="foto-fundo textura" style="--foto-filtro:brightness(.38) saturate(1.15) sepia(.25) contrast(1.1)"><img src="../assets/fotos/nelore-pasto.jpg" alt=""></div>
+    <div class="veu topo-escuro"></div>
+    <div class="veu vinheta"></div>
+    <div class="veu brilho-sol"></div>
     <div class="titulo">
       <div class="t-forte">Cada negócio do agro</div>
       <div class="t-destaque" style="font-size:76px">pede um site diferente,</div>
@@ -328,27 +357,27 @@
       <div class="tablet t-esq"><div class="tela">
         <div class="site" style="--c:#F4A93C">
           <div class="s-nav"><b>Campo<i>Forte</i></b><span></span></div>
-          <div class="s-hero ceu-sol"><div class="lavoura" style="height:42%"></div><h4>Insumos com entrega na sua fazenda</h4><span class="s-btn">Pedir orçamento</span></div>
+          <div class="s-hero com-foto" style="background-image:url(../assets/fotos/lavoura-produtor-por-do-sol.jpg);background-position:62% 30%"><h4>Insumos com entrega na sua fazenda</h4><span class="s-btn">Pedir orçamento</span></div>
           <div class="s-sec">Produtos</div>
-          <div class="s-grid"><div><i></i>Sementes</div><div><i style="--g:linear-gradient(135deg,#9cc46a,#4d7a2a)"></i>Adubos</div></div>
+          <div class="s-grid"><div><i style="--g:url(../assets/fotos/soja-primeiro-plano.jpg) 30% 70%/260%"></i>Sementes</div><div><i style="--g:url(../assets/fotos/abelha-girassol.jpg) 50% 45%/150%"></i>Apicultura</div></div>
         </div>
       </div></div>
 
       <div class="tablet t-dir"><div class="tela">
         <div class="site" style="--c:#4FB3BF">
           <div class="s-nav"><b>Coop<i>Vale</i></b><span></span></div>
-          <div class="s-hero" style="background:linear-gradient(160deg,#1f5a66,#0e2f36)"><h4>Área do cooperado</h4><span class="s-btn">Entrar</span></div>
+          <div class="s-hero com-foto" style="background-image:url(../assets/fotos/ceu-dramatico-soja.jpg);background-position:50% 60%"><h4>Área do cooperado</h4><span class="s-btn">Entrar</span></div>
           <div class="s-sec">Cotação do dia</div>
-          <div class="s-grid"><div><i style="--g:linear-gradient(135deg,#7fd0d8,#2f7f8a)"></i>Soja</div><div><i style="--g:linear-gradient(135deg,#e8d28a,#a88a2f)"></i>Milho</div></div>
+          <div class="s-grid"><div><i style="--g:url(../assets/fotos/soja-primeiro-plano.jpg) 70% 40%/240%"></i>Soja</div><div><i style="--g:url(../assets/fotos/lavoura-produtor-por-do-sol.jpg) 74% 30%/700%"></i>Armazém</div></div>
         </div>
       </div></div>
 
       <div class="tablet t-meio"><div class="tela">
         <div class="site" style="--c:#8FDC55">
           <div class="s-nav"><b>Fazenda<i>Aurora</i></b><span></span></div>
-          <div class="s-hero" style="background:linear-gradient(#5d7d3b,#2c4a1c)"><div class="lavoura" style="height:55%"></div><h4>Genética e qualidade desde o campo</h4><span class="s-btn">Conheça o plantel</span></div>
+          <div class="s-hero com-foto" style="background-image:url(../assets/fotos/nelore-pasto.jpg);background-position:66% 50%;background-size:170%"><h4>Genética e qualidade desde o campo</h4><span class="s-btn">Conheça o plantel</span></div>
           <div class="s-sec">Destaques</div>
-          <div class="s-grid"><div><i style="--g:linear-gradient(135deg,#a3c46a,#557a2a)"></i>Rebanho</div><div><i style="--g:linear-gradient(135deg,#d9b46a,#8d6b2f)"></i>Leilões</div></div>
+          <div class="s-grid"><div><i style="--g:url(../assets/fotos/nelore-pasto.jpg) 64% 52%/300%"></i>Rebanho</div><div><i style="--g:url(../assets/fotos/nelore-pasto.jpg) 20% 40%/200%"></i>Pastagens</div></div>
         </div>
       </div></div>
 
@@ -363,6 +392,10 @@
 <!-- ======================= 05 · CHECKLIST ======================= -->
 <section class="slide sol s5">
   <div class="janela">
+    <div class="foto-fundo textura" style="--foto-filtro:brightness(.38) saturate(1.15) sepia(.25) contrast(1.1)"><img src="../assets/fotos/soja-por-do-sol-ceu.jpg" alt=""></div>
+    <div class="veu topo-escuro"></div>
+    <div class="veu vinheta"></div>
+    <div class="veu brilho-sol"></div>
     <div class="titulo">
       <div class="t-leve">Na hora de fazer o seu,</div>
       <div class="t-destaque">não pode faltar:</div>
@@ -382,6 +415,10 @@
 <!-- ======================= 06 · CTA ======================= -->
 <section class="slide sol s6">
   <div class="janela">
+    <div class="foto-fundo textura" style="--foto-filtro:brightness(.38) saturate(1.15) sepia(.25) contrast(1.1)"><img src="../assets/fotos/lavoura-produtor-por-do-sol.jpg" alt=""></div>
+    <div class="veu topo-escuro"></div>
+    <div class="veu vinheta"></div>
+    <div class="veu brilho-sol"></div>
     <div class="titulo">
       <div class="t-leve">Bora colocar a sua empresa</div>
       <div class="t-destaque">no mapa digital?</div>

@@ -210,3 +210,55 @@ body {
   background: linear-gradient(rgba(255, 200, 120, .35), transparent 35%, rgba(0, 0, 0, .25));
 }
 .ceu-sol { background: linear-gradient(#2d5233 0%, #7f8f4e 45%, #f2b155 78%, #ffd99a 100%); }
+
+/* =========================================================
+   REALISMO: fotos reais, luz, sombra, sobreposição, retícula
+   ========================================================= */
+
+/* retícula ("pixelzinhos") por cima de tudo: pontos de meio-tom + scanline sutil */
+.janela::before {
+  content: ''; position: absolute; inset: 0; z-index: 49; pointer-events: none;
+  background:
+    radial-gradient(circle, rgba(0, 0, 0, .55) 0 1.05px, transparent 1.6px) 0 0 / 5px 5px,
+    radial-gradient(circle, rgba(255, 255, 255, .22) 0 .8px, transparent 1.3px) 2.5px 2.5px / 5px 5px,
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, .08) 0 1px, transparent 1px 3px);
+  mix-blend-mode: soft-light; opacity: var(--reticula, .9);
+}
+
+/* foto de fundo com tratamento de cor */
+.foto-fundo { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+.foto-fundo img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  object-position: var(--pos, 50% 50%);
+  filter: var(--foto-filtro, saturate(1.05) contrast(1.08) brightness(.72));
+  transform: scale(var(--zoom, 1.04));
+}
+.foto-fundo.desfocada img { filter: var(--foto-filtro, saturate(1.05) contrast(1.05) brightness(.62)) blur(var(--desfoque, 6px)); transform: scale(1.12); }
+/* véu: escurece onde vai texto e cria vinheta */
+.veu { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.veu.topo-escuro { background: linear-gradient(rgba(6, 10, 8, .92) 0%, rgba(6, 10, 8, .55) 30%, transparent 55%); }
+.veu.vinheta { background: radial-gradient(120% 90% at 50% 45%, transparent 45%, rgba(0, 0, 0, .65) 100%); }
+.veu.base-escura { background: linear-gradient(transparent 55%, rgba(5, 8, 6, .85) 100%); }
+
+/* recorte (foto sem fundo) com sombra de contato e luz de borda */
+.recorte {
+  position: absolute; z-index: 9; pointer-events: none;
+  filter:
+    drop-shadow(0 0 1.5px var(--borda, rgba(255, 210, 150, .9)))
+    drop-shadow(0 0 22px var(--brilho, rgba(255, 170, 70, .35)))
+    drop-shadow(0 40px 40px rgba(0, 0, 0, .55));
+}
+/* luz atrás do objeto (contraluz) */
+.contraluz { position: absolute; z-index: 3; border-radius: 50%; pointer-events: none; filter: blur(30px);
+  background: radial-gradient(circle, var(--luz, rgba(255, 176, 72, .75)), transparent 65%); }
+/* vazamento de luz (light leak) */
+.vazamento { position: absolute; z-index: 44; pointer-events: none; mix-blend-mode: screen; filter: blur(40px); opacity: .55;
+  background: radial-gradient(closest-side, var(--leak, rgba(255, 140, 40, .9)), transparent); }
+/* elementos de foto desfocados no primeiro plano */
+.desfoque-frente { position: absolute; z-index: 46; pointer-events: none; filter: blur(var(--b, 14px)) saturate(1.1); }
+
+/* foto como textura do fundo (mistura com as cores do tema) */
+.foto-fundo.textura { mix-blend-mode: var(--mistura, normal); opacity: var(--opac, 1); }
+.veu.brilho-sol { background: radial-gradient(120% 60% at 50% 112%, rgba(246, 150, 48, .6), rgba(170, 82, 18, .2) 45%, transparent 72%); mix-blend-mode: screen; }
+.veu.brilho-verde { background: radial-gradient(90% 55% at 50% -5%, rgba(143, 220, 85, .28), transparent 66%); mix-blend-mode: screen; }
+.foto-fundo.textura img { filter: var(--foto-filtro, contrast(1.15) brightness(.8)) blur(var(--desfoque, 2px)); transform: scale(1.06); }
