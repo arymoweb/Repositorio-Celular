@@ -55,7 +55,7 @@
       for (let k = 0; k < qtd; k++) {
         const d = 2 + r() * 5;
         const dot = document.createElement('i');
-        dot.style.cssText = `left:${r() * 100}%;top:${10 + r() * 85}%;width:${d}px;height:${d}px;opacity:${.15 + r() * .55};` +
+        const lado = r(); dot.style.cssText = `left:${lado < .5 ? 1 + r() * 11 : 88 + r() * 11}%;top:${10 + r() * 85}%;width:${d}px;height:${d}px;opacity:${.15 + r() * .55};` +
           (r() > .7 ? `filter:blur(${1 + r() * 2}px);` : '');
         p.appendChild(dot);
       }

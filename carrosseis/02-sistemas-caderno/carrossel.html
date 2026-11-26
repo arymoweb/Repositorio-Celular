@@ -26,15 +26,15 @@
   font-size: 50px; font-weight: 400; color: #fff; letter-spacing: -.5px;
 }
 .capa .k .serif { color: var(--lima); font-size: 60px; }
-.palavra-grande { position: absolute; left: 40px; right: 0; top: 284px; z-index: 4; display: flex; justify-content: center; align-items: flex-start; }
+.palavra-grande { position: absolute; left: 0; right: 0; top: 300px; z-index: 4; display: flex; justify-content: center; align-items: baseline; }
 .palavra-grande .script {
-  font-family: var(--f-script); font-size: 430px; line-height: .8; margin-right: -118px; margin-top: -10px; z-index: 2;
+  font-family: var(--f-serif); font-style: italic; font-size: 300px; line-height: .8; margin-right: -14px; z-index: 2; padding: 0 .06em 0 .02em;
   background: linear-gradient(170deg, var(--lima-2), var(--lima) 50%, #4d9a2a);
   -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 6px 24px rgba(143, 220, 85, .35));
 }
 .palavra-grande .cond {
-  font-family: var(--f-cond); font-size: 222px; line-height: 1; letter-spacing: -2px; padding-top: 40px;
+  font-family: var(--f-cond); font-size: 200px; line-height: 1; letter-spacing: -2px;
   background: linear-gradient(#fff 35%, #c9cfc8);
   -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 0 26px rgba(255, 255, 255, .18));
@@ -82,17 +82,17 @@
 .bolha { padding: 12px 18px; border-radius: 18px 18px 18px 4px; background: #fff; margin: 10px 60px 0 0; line-height: 1.3; box-shadow: 0 1px 2px rgba(0,0,0,.08); }
 .bolha.eu { background: #d6f5c0; margin: 10px 0 0 60px; border-radius: 18px 18px 4px 18px; }
 .bolha small { display: block; font-size: 15px; color: #4c8a3a; font-weight: 600; }
-.arquivo { right: 80px; top: 0; width: 400px; padding: 24px; background: #fff; transform: rotate(6deg); display: flex; gap: 18px; align-items: center; color: #1b241d; }
+.arquivo { right: 60px; top: -10px; z-index: 3; width: 400px; padding: 24px; background: #fff; transform: rotate(6deg); display: flex; gap: 18px; align-items: center; color: #1b241d; }
 .arquivo .ic { width: 70px; height: 86px; flex: none; border-radius: 8px; background: #1f7a43; position: relative; }
 .arquivo .ic::after { content: 'XLS'; position: absolute; left: 0; right: 0; bottom: 12px; text-align: center; color: #fff; font-weight: 700; font-size: 17px; }
-.arquivo b { font-size: 22px; line-height: 1.25; word-break: break-all; }
+.arquivo b { font-size: 22px; line-height: 1.25; }
 .arquivo small { display: block; margin-top: 6px; font-size: 17px; color: #8a8f8a; }
 .postit {
   right: 110px; top: 215px; width: 330px; height: 300px; padding: 34px 30px; border-radius: 4px; transform: rotate(-4deg);
   background: linear-gradient(#ffe97a, #f7d84a); font-family: var(--f-mao); font-weight: 700; font-size: 50px; line-height: 1.08; color: #3b3112;
 }
 .nota {
-  left: 170px; top: 330px; width: 400px; padding: 26px 30px 40px; border-radius: 6px 6px 0 0; transform: rotate(4deg);
+  left: 120px; top: 410px; width: 380px; padding: 22px 28px 36px; border-radius: 6px 6px 0 0; transform: rotate(4deg);
   background: #fff; font-family: var(--f-mono); font-size: 19px; color: #444; line-height: 1.7;
   -webkit-mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 50% / 26px 100%;
 }
@@ -165,7 +165,7 @@
   box-shadow: 0 0 0 2px rgba(143, 220, 85, .25), 0 40px 90px rgba(0, 0, 0, .6), 0 0 120px rgba(143, 220, 85, .18);
 }
 .banner img { display: block; width: 100%; }
-.comenta { position: absolute; left: 0; right: 0; top: 960px; z-index: 8; text-align: center; }
+.comenta { position: absolute; left: 0; right: 0; top: 850px; z-index: 8; text-align: center; }
 .comenta .linha1 { font-size: 46px; font-weight: 500; color: #fff; display: inline-flex; align-items: center; gap: 22px; }
 .comenta .palavra {
   font-family: var(--f-cond); font-size: 74px; letter-spacing: 2px; color: #112808; line-height: 1;
@@ -187,6 +187,9 @@
   mix-blend-mode: multiply;
 }
 .cartao { box-shadow: 0 40px 70px rgba(0, 0, 0, .7), 0 8px 16px rgba(0, 0, 0, .35); }
+
+.luz-logo { position: absolute; left: 140px; right: 140px; top: 470px; height: 300px; z-index: 6; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(143, 220, 85, .22), transparent); filter: blur(30px); }
 </style>
 </head>
 <body>
@@ -205,13 +208,13 @@
       <div class="espiral"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
       <div class="escrita">
         <div class="titulo-mao">Março</div>
-        <div>40 sc soja → João <span class="verm">(pagou??)</span></div>
+        <div>40 sc soja <svg class="ico seta-mao" viewBox="0 0 30 16"><path d="M1.5 9.2c6-1.4 13.5-1.6 25.6-1.1M20.4 2.6c2.6 1.9 4.6 3.6 6.9 5.6-2.6 1.6-4.9 3.6-7 5.6"/></svg> João <span class="verm">(pagou??)</span></div>
         <div>adubo: ver c/ Zé</div>
-        <div><s>vacina lote 3</s> ✓</div>
+        <div><s>vacina lote 3</s> <svg class="ico check-mao" viewBox="0 0 20 20"><path d="M2.5 10.8c1.6 1.4 3 3 4.2 4.9 2.5-5.1 6.1-9.2 10.6-12.3"/></svg></div>
         <div>ração barracão: <span class="verm">???</span></div>
         <div>ligar cliente das 200 sc</div>
         <div><s>conta de luz</s></div>
-        <div>peça trator → semana q vem</div>
+        <div>peça trator <svg class="ico seta-mao" viewBox="0 0 30 16"><path d="M1.5 9.2c6-1.4 13.5-1.6 25.6-1.1M20.4 2.6c2.6 1.9 4.6 3.6 6.9 5.6-2.6 1.6-4.9 3.6-7 5.6"/></svg> semana q vem</div>
       </div>
       <div class="mancha"></div>
     </div>
@@ -237,18 +240,17 @@
     </div>
 
     <div class="monte">
-      <div class="cartao arquivo"><span class="ic"></span><div><b>estoque_FINAL_v3_agora_vai.xlsx</b><small>editado por ??? · há 23 dias</small></div></div>
+      <div class="cartao arquivo"><span class="ic"></span><div><b>estoque_FINAL_v3_<wbr>agora_vai.xlsx</b><small>editado por ??? · há 23 dias</small></div></div>
       <div class="cartao chat">
         <div class="cab"><i></i><div><b>Grupo Fazenda</b><small>12 participantes</small></div></div>
         <div class="bolha">alguém sabe quanto tem de ração no barracão?</div>
         <div class="bolha"><small>Zé</small>acho que acabou</div>
-        <div class="bolha eu">quem pegou a nota do adubo??</div>
+        <div class="bolha eu">cadê a nota do adubo??</div>
       </div>
       <div class="cartao nota">
         <b>NOTA · BALCÃO</b>
         <div>Sementes ........ ?</div>
         <div>Frete ........... ?</div>
-        <div>Desconto ........ ?</div>
         <div class="tot"><span>TOTAL</span><span>R$ ????</span></div>
       </div>
       <div class="cartao postit">ligar pro cliente das 200 sacas!!<br>(qual era o nº?)</div>
@@ -276,19 +278,19 @@
       <div class="lado antes">
         <h3>ANTES</h3>
         <ul>
-          <li><i>✕</i><span>Caderno e papelada</span></li>
-          <li><i>✕</i><span>Planilha desatualizada</span></li>
-          <li><i>✕</i><span>Pedido perdido no WhatsApp</span></li>
-          <li><i>✕</i><span>Informação só na cabeça do dono</span></li>
+          <li><i><svg class="ico" viewBox="0 0 20 20"><path d="M5 5l10 10M15 5L5 15"/></svg></i><span>Caderno e papelada</span></li>
+          <li><i><svg class="ico" viewBox="0 0 20 20"><path d="M5 5l10 10M15 5L5 15"/></svg></i><span>Planilha desatualizada</span></li>
+          <li><i><svg class="ico" viewBox="0 0 20 20"><path d="M5 5l10 10M15 5L5 15"/></svg></i><span>Pedido perdido no WhatsApp</span></li>
+          <li><i><svg class="ico" viewBox="0 0 20 20"><path d="M5 5l10 10M15 5L5 15"/></svg></i><span>Informação só na cabeça do dono</span></li>
         </ul>
       </div>
       <div class="lado depois">
         <h3>DEPOIS</h3>
         <ul>
-          <li><i>✓</i>Tudo em um sistema só</li>
-          <li><i>✓</i>Estoque atualizado na hora</li>
-          <li><i>✓</i>Pedidos organizados</li>
-          <li><i>✓</i>Relatório em um clique</li>
+          <li><i><svg class="ico" viewBox="0 0 20 20"><path d="M3.5 10.5l4.2 4.2L16.5 5.5"/></svg></i>Tudo em um sistema só</li>
+          <li><i><svg class="ico" viewBox="0 0 20 20"><path d="M3.5 10.5l4.2 4.2L16.5 5.5"/></svg></i>Estoque atualizado na hora</li>
+          <li><i><svg class="ico" viewBox="0 0 20 20"><path d="M3.5 10.5l4.2 4.2L16.5 5.5"/></svg></i>Pedidos organizados</li>
+          <li><i><svg class="ico" viewBox="0 0 20 20"><path d="M3.5 10.5l4.2 4.2L16.5 5.5"/></svg></i>Relatório em um clique</li>
         </ul>
       </div>
       <div class="seta-meio"><svg width="34" height="16" viewBox="0 0 34 16" fill="none" stroke="#8FDC55" stroke-width="3"><path d="M0 8h31M24 1l7 7-7 7"/></svg></div>
@@ -368,7 +370,7 @@
       <div class="mod"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15 9.2c-.6-1-1.7-1.5-3-1.5-1.7 0-3 .9-3 2.1 0 2.8 6 1.5 6 4.3 0 1.2-1.3 2.2-3 2.2-1.4 0-2.6-.6-3.1-1.6M12 6v1.7M12 16.3V18"/></svg></div><h6>Financeiro</h6><p>contas a pagar e a receber</p></div>
       <div class="mod"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.6"/><path d="M16 14.2c2.8.2 5 2.6 5 5.8"/></svg></div><h6>Equipe</h6><p>tarefas e acesso por usuário</p></div>
     </div>
-    <div class="nota-mao" style="position:absolute;left:0;right:0;bottom:92px;text-align:center;color:var(--lima);opacity:.6;transform:rotate(-2deg);z-index:9">e o que mais a sua operação precisar →</div>
+    <div class="nota-mao" style="position:absolute;left:0;right:0;bottom:92px;text-align:center;color:var(--lima);opacity:.6;transform:rotate(-2deg);z-index:9">e o que mais a sua operação precisar <svg class="ico seta-mao" viewBox="0 0 30 16"><path d="M1.5 9.2c6-1.4 13.5-1.6 25.6-1.1M20.4 2.6c2.6 1.9 4.6 3.6 6.9 5.6-2.6 1.6-4.9 3.6-7 5.6"/></svg></div>
   </div>
   <i class="folha" style="right:-80px;top:260px;width:230px" data-rot="200" data-blur="13"></i>
 </section>
@@ -384,15 +386,16 @@
       <div class="t-leve">Bora tirar a sua gestão</div>
       <div class="t-destaque">do caderno?</div>
     </div>
-    <div class="banner"><img src="../assets/logo/agricode-banner.jpg" alt="AgriCode"></div>
+    <div class="luz-logo"></div>
+    <img class="logo-cta" src="../assets/logo/agricode-logo-full.png" alt="AgriCode" style="top:540px">
     <div class="comenta">
       <div class="linha1">Comenta <span class="palavra">SISTEMA</span></div>
       <div class="linha2">que a gente te mostra como funciona.</div>
     </div>
     <div class="rodape-mini">@agricodeagencia · criação de sites e sistemas para o agronegócio</div>
   </div>
-  <i class="folha" style="left:-70px;top:330px;width:220px" data-rot="-25" data-blur="13"></i>
-  <i class="folha" style="right:-90px;bottom:170px;width:300px" data-rot="165" data-blur="12"></i>
+  <i class="folha" style="left:-90px;top:430px;width:220px" data-rot="-25" data-blur="13"></i>
+  <i class="folha" style="right:-100px;bottom:40px;width:300px" data-rot="165" data-blur="12"></i>
 </section>
 
 <script src="../base/agricode.js"></script>

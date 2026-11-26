@@ -101,12 +101,15 @@
 .rank { left: 40px; height: 40px; border-radius: 12px; background: rgba(255, 255, 255, .12); }
 .rank.top { background: rgba(244, 169, 60, .55); }
 
-.rotulos { position: absolute; left: 600px; top: 520px; z-index: 9; }
-.rotulo { position: absolute; left: 0; display: flex; align-items: center; gap: 18px; white-space: nowrap; font-size: 35px; font-weight: 500; color: #fff; }
+.rotulos { position: absolute; left: 585px; top: 520px; z-index: 9; }
+.rotulo { position: absolute; left: 0; display: flex; align-items: center; gap: 18px; white-space: nowrap; font-size: 33px; font-weight: 500; color: #fff; }
 .rotulo::before { content: ''; width: 44px; height: 2px; background: rgba(255, 255, 255, .35); margin-right: -6px; }
 
 /* ---------- 3 · celular ---------- */
-.s3 .celular { left: 325px; top: 470px; transform: rotate(-4deg); z-index: 8; }
+.s3 .celular { left: 345px; top: 480px; width: 395px; height: 810px; transform: rotate(-3deg); z-index: 8; }
+.s3 .chip { font-size: 25px; padding: 13px 22px 13px 14px; gap: 12px; }
+.s3 .chip small { font-size: 17px; }
+.s3 .chip .ok { width: 38px; height: 38px; }
 .chip {
   position: absolute; z-index: 12; display: flex; align-items: center; gap: 14px;
   padding: 14px 24px 14px 16px; border-radius: 22px;
@@ -164,7 +167,7 @@
   box-shadow: 0 0 0 2px rgba(255, 220, 170, .2), 0 40px 90px rgba(0, 0, 0, .6), 0 0 120px rgba(244, 169, 60, .25);
 }
 .banner img { display: block; width: 100%; }
-.comenta { position: absolute; left: 0; right: 0; top: 960px; z-index: 8; text-align: center; }
+.comenta { position: absolute; left: 0; right: 0; top: 850px; z-index: 8; text-align: center; }
 .comenta .linha1 { font-size: 46px; font-weight: 500; color: #fff; display: inline-flex; align-items: center; gap: 22px; }
 .comenta .palavra {
   font-family: var(--f-cond); font-size: 74px; letter-spacing: 2px; color: #231505; line-height: 1;
@@ -194,6 +197,11 @@
 .site .s-hero.com-foto { background-size: cover; }
 .site .s-hero.com-foto::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(160deg, rgba(0,0,0,.55), rgba(0,0,0,.05) 60%, rgba(0,0,0,.35)); }
 .site .s-grid div i { background-size: cover; }
+
+.site.direita .s-hero h4, .site.direita .s-sec { text-align: right; }
+.site.direita .s-btn { left: auto; right: 1.2em; }
+.luz-logo { position: absolute; left: 140px; right: 140px; top: 470px; height: 300px; z-index: 6; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(244, 169, 60, .28), transparent); filter: blur(30px); }
 </style>
 </head>
 <body>
@@ -229,7 +237,7 @@
     <div class="arrasta">arrasta pro lado <svg viewBox="0 0 34 16" fill="none" stroke="#fff" stroke-width="2.4"><path d="M0 8h31M24 1l7 7-7 7"/></svg></div>
     <div class="vazamento" style="right:-160px;top:380px;width:520px;height:520px"></div>
   </div>
-  <i class="folha" style="left:-120px;bottom:-30px;width:300px" data-rot="-18" data-blur="14"></i>
+  <i class="folha" style="right:-90px;top:700px;width:230px" data-rot="170" data-blur="14"></i>
   <i class="folha" style="right:-60px;top:150px;width:200px" data-rot="160" data-blur="16"></i>
 </section>
 
@@ -313,11 +321,11 @@
       <div class="ilha"></div>
       <div class="tela">
         <div class="site" style="--c:#F4A93C">
-          <div class="status"><span>9:41</span><span>●●● ▮</span></div>
+          <div class="status"><span>9:41</span><span class="ico-status"><svg viewBox="0 0 26 16"><rect x="0" y="10" width="4" height="6" rx="1"/><rect x="7" y="7" width="4" height="9" rx="1"/><rect x="14" y="4" width="4" height="12" rx="1"/><rect x="21" y="0" width="4" height="16" rx="1"/></svg><svg viewBox="0 0 30 16"><rect x="1" y="1" width="24" height="14" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="4" y="4" width="16" height="8" rx="2"/><rect x="26.5" y="5.5" width="2" height="5" rx="1"/></svg></span></div>
           <div class="s-nav"><b>Campo<i>Forte</i></b><span></span></div>
           <div class="s-hero com-foto" style="background-image:url(../assets/fotos/lavoura-produtor-por-do-sol.jpg);background-position:62% 30%">
             <h4>Insumos com entrega na sua fazenda</h4>
-            <span class="s-btn">Pedir orçamento →</span>
+            <span class="s-btn">Pedir orçamento <svg class="ico seta" viewBox="0 0 22 12"><path d="M1 6h19M14.5 1l5.5 5-5.5 5"/></svg></span>
           </div>
           <div class="s-sec">Nossos produtos</div>
           <div class="s-grid">
@@ -331,9 +339,9 @@
       </div>
     </div>
 
-    <div class="chip" style="left:34px;top:870px;transform:rotate(-3deg)"><span class="ok">✓</span><div>Abre rápido<small>até com sinal fraco no campo</small></div></div>
-    <div class="chip" style="right:34px;top:650px;transform:rotate(3deg)"><span class="ok">✓</span><div>WhatsApp<small>o cliente chama em 1 toque</small></div></div>
-    <div class="chip" style="left:40px;top:1100px;transform:rotate(-2deg)"><span class="ok">✓</span><div>Fácil de ler<small>até no sol do meio-dia</small></div></div>
+    <div class="chip" style="left:22px;top:640px;transform:rotate(-3deg)"><span class="ok"><svg class="ico" viewBox="0 0 20 20"><path d="M3.5 10.5l4.2 4.2L16.5 5.5"/></svg></span><div>Abre rápido<small>até com sinal fraco</small></div></div>
+    <div class="chip" style="right:20px;top:850px;transform:rotate(3deg)"><span class="ok"><svg class="ico" viewBox="0 0 20 20"><path d="M3.5 10.5l4.2 4.2L16.5 5.5"/></svg></span><div>WhatsApp<small>chama em 1 toque</small></div></div>
+    <div class="chip" style="left:22px;top:1060px;transform:rotate(-2deg)"><span class="ok"><svg class="ico" viewBox="0 0 20 20"><path d="M3.5 10.5l4.2 4.2L16.5 5.5"/></svg></span><div>Fácil de ler<small>até no sol forte</small></div></div>
 
   </div>
   <i class="folha" style="left:-60px;top:330px;width:190px" data-rot="-30" data-blur="14"></i>
@@ -357,16 +365,16 @@
       <div class="tablet t-esq"><div class="tela">
         <div class="site" style="--c:#F4A93C">
           <div class="s-nav"><b>Campo<i>Forte</i></b><span></span></div>
-          <div class="s-hero com-foto" style="background-image:url(../assets/fotos/lavoura-produtor-por-do-sol.jpg);background-position:62% 30%"><h4>Insumos com entrega na sua fazenda</h4><span class="s-btn">Pedir orçamento</span></div>
+          <div class="s-hero com-foto" style="background-image:url(../assets/fotos/lavoura-produtor-por-do-sol.jpg);background-position:62% 30%"><h4>Insumos<br>agrícolas</h4><span class="s-btn">Pedir orçamento</span></div>
           <div class="s-sec">Produtos</div>
           <div class="s-grid"><div><i style="--g:url(../assets/fotos/soja-primeiro-plano.jpg) 30% 70%/260%"></i>Sementes</div><div><i style="--g:url(../assets/fotos/abelha-girassol.jpg) 50% 45%/150%"></i>Apicultura</div></div>
         </div>
       </div></div>
 
       <div class="tablet t-dir"><div class="tela">
-        <div class="site" style="--c:#4FB3BF">
+        <div class="site direita" style="--c:#4FB3BF">
           <div class="s-nav"><b>Coop<i>Vale</i></b><span></span></div>
-          <div class="s-hero com-foto" style="background-image:url(../assets/fotos/ceu-dramatico-soja.jpg);background-position:50% 60%"><h4>Área do cooperado</h4><span class="s-btn">Entrar</span></div>
+          <div class="s-hero com-foto" style="background-image:url(../assets/fotos/ceu-dramatico-soja.jpg);background-position:50% 60%"><h4>Portal do<br>cooperado</h4><span class="s-btn">Entrar</span></div>
           <div class="s-sec">Cotação do dia</div>
           <div class="s-grid"><div><i style="--g:url(../assets/fotos/soja-primeiro-plano.jpg) 70% 40%/240%"></i>Soja</div><div><i style="--g:url(../assets/fotos/lavoura-produtor-por-do-sol.jpg) 74% 30%/700%"></i>Armazém</div></div>
         </div>
@@ -423,15 +431,16 @@
       <div class="t-leve">Bora colocar a sua empresa</div>
       <div class="t-destaque">no mapa digital?</div>
     </div>
-    <div class="banner"><img src="../assets/logo/agricode-banner.jpg" alt="AgriCode"></div>
+    <div class="luz-logo"></div>
+    <img class="logo-cta" src="../assets/logo/agricode-logo-full.png" alt="AgriCode" style="top:540px">
     <div class="comenta">
       <div class="linha1">Comenta <span class="palavra">SITE</span></div>
       <div class="linha2">que a gente te chama no direct.</div>
     </div>
     <div class="rodape-mini">@agricodeagencia · criação de sites e sistemas para o agronegócio</div>
   </div>
-  <i class="folha" style="left:-70px;top:300px;width:230px" data-rot="-25" data-blur="13"></i>
-  <i class="folha" style="right:-90px;bottom:180px;width:300px" data-rot="165" data-blur="12"></i>
+  <i class="folha" style="left:-90px;top:430px;width:230px" data-rot="-25" data-blur="13"></i>
+  <i class="folha" style="right:-100px;bottom:40px;width:300px" data-rot="165" data-blur="12"></i>
 </section>
 
 <script src="../base/agricode.js"></script>

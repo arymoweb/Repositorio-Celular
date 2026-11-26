@@ -78,7 +78,7 @@
 .comparo { position: absolute; left: 0; right: 0; top: 720px; z-index: 10; text-align: center; }
 .comparo .kicker-mono { color: rgba(255, 255, 255, .55); }
 .comparo .ruim { margin: 14px 0 54px; font-size: 64px; font-weight: 600; color: rgba(255, 255, 255, .32); letter-spacing: -1px; }
-.comparo .bom { margin-top: 10px; font-size: 92px; font-weight: 700; color: #fff; letter-spacing: -3px; line-height: 1; text-shadow: 0 0 40px rgba(143, 220, 85, .35); }
+.comparo .bom { margin-top: 10px; font-size: 84px; font-weight: 700; color: #fff; letter-spacing: -3px; line-height: 1; text-shadow: 0 0 40px rgba(143, 220, 85, .35); }
 .comparo .bom span { color: var(--lima); }
 .comparo .rot { display: inline-block; margin-left: 14px; vertical-align: middle; font-size: 20px; font-family: var(--f-mono); padding: 6px 14px; border-radius: 30px; letter-spacing: 0; }
 .comparo .ruim .rot { background: rgba(255, 255, 255, .08); color: rgba(255, 255, 255, .5); font-weight: 500; }
@@ -117,7 +117,7 @@
 }
 .servidor .u::before { content: ''; position: absolute; left: 24px; right: 100px; top: 26px; height: 12px; border-radius: 6px; background: repeating-linear-gradient(90deg, #4b5f52 0 14px, transparent 14px 22px); }
 .servidor .u::after { content: ''; position: absolute; right: 24px; top: 22px; width: 20px; height: 20px; border-radius: 50%; background: var(--lima); box-shadow: 0 0 16px var(--lima), -36px 0 0 #F4A93C; }
-.buscador { left: 120px; right: 120px; top: 768px; transform: rotate(-2deg); }
+.buscador { left: 120px; right: 120px; top: 818px; transform: rotate(-2deg); }
 .buscador .campo-b {
   height: 104px; border-radius: 60px; background: #fff; display: flex; align-items: center; gap: 22px; padding: 0 36px;
   font-size: 38px; color: #333; box-shadow: 0 26px 50px rgba(0, 0, 0, .35);
@@ -126,7 +126,7 @@
   margin: 18px 40px 0; padding: 22px 30px; border-radius: 26px; background: #fff; display: flex; align-items: center; gap: 22px;
   box-shadow: 0 0 0 4px var(--lima), 0 26px 50px rgba(0, 0, 0, .35);
 }
-.buscador .res .pos { font-family: var(--f-cond); font-size: 60px; color: #2F7D1F; line-height: 1; }
+.buscador .res .pos { font-family: var(--f-sans); font-weight: 800; font-size: 48px; letter-spacing: -2px; color: #2F7D1F; line-height: 1; }
 .buscador .res b { display: block; font-size: 36px; color: #1a3f8f; }
 .buscador .res small { font-size: 24px; color: #2F7D1F; }
 .cadeado { left: 50%; top: 560px; width: 290px; margin-left: -150px; filter: drop-shadow(0 30px 50px rgba(30, 40, 30, .35)); }
@@ -154,7 +154,7 @@
   box-shadow: 0 30px 70px rgba(30, 40, 30, .35);
 }
 .banner img { display: block; width: 100%; }
-.salva { position: absolute; left: 0; right: 0; top: 900px; z-index: 8; text-align: center; }
+.salva { position: absolute; left: 0; right: 0; top: 880px; z-index: 8; text-align: center; }
 .salva .grande { display: inline-flex; align-items: center; gap: 20px; font-size: 62px; font-weight: 700; letter-spacing: -2px; color: var(--tinta); }
 .salva .grande svg { width: 54px; height: 64px; }
 .salva .peq { margin-top: 12px; font-size: 38px; color: var(--txt-2); }
@@ -187,6 +187,10 @@
 
 .palha .foto-fundo.nuvens { mix-blend-mode: multiply; opacity: .32; -webkit-mask: linear-gradient(#000 0%, #000 40%, transparent 75%); mask: linear-gradient(#000 0%, #000 40%, transparent 75%); }
 .palha .foto-fundo.nuvens img { object-position: 50% 0%; filter: grayscale(1) sepia(.5) contrast(1.25) brightness(1.35); transform: scale(1.3); transform-origin: 50% 0; }
+
+.buscador .res { padding: 16px 28px; margin-top: 14px; }
+.buscador .res b { font-size: 33px; }
+.buscador .res small { font-size: 22px; }
 </style>
 </head>
 <body>
@@ -226,10 +230,10 @@
       <div class="kicker-mono">site próprio</div>
       <div class="bom">suaempresa<span>.com.br</span></div>
     </div>
-    <div class="nota-mao" style="position:absolute;right:90px;bottom:125px;transform:rotate(-4deg);z-index:12">os 5 termos a seguir importam →</div>
+    <div class="nota-mao" style="position:absolute;right:90px;bottom:125px;transform:rotate(-4deg);z-index:12">os 5 termos a seguir importam <svg class="ico seta-mao" viewBox="0 0 30 16"><path d="M1.5 9.2c6-1.4 13.5-1.6 25.6-1.1M20.4 2.6c2.6 1.9 4.6 3.6 6.9 5.6-2.6 1.6-4.9 3.6-7 5.6"/></svg></div>
     <div class="rodape-mini" style="bottom:60px">agricode · sites e sistemas para o agronegócio</div>
   </div>
-  <i class="folha" style="left:-80px;bottom:40px;width:250px" data-rot="-12" data-blur="16"></i>
+  <i class="folha" style="left:-110px;bottom:-40px;width:250px" data-rot="-12" data-blur="16"></i>
 </section>
 
 <!-- ======================= 03 · DOMÍNIO ======================= -->
@@ -261,7 +265,7 @@
       <div class="kicker-mono">termo 2 de 5</div>
       <div class="linha">O <span class="serif">terreno</span> onde o seu site<br>fica guardado.</div>
     </div>
-    <div class="palavra" style="font-size:236px;top:690px">HOSPEDAGEM</div>
+    <div class="palavra" style="font-size:218px;top:700px">HOSPEDAGEM</div>
     <div class="obj servidor"><div class="u"></div><div class="u"></div><div class="u"></div></div>
     <div class="legenda"><b>Hospedagem</b> · boa hospedagem deixa o site<br>no ar e rápido, 24 horas por dia.</div>
     <div class="nota-mao">barato demais sai caro</div>
@@ -278,12 +282,12 @@
       <div class="kicker-mono">termo 3 de 5</div>
       <div class="linha">O que faz o Google<br><span class="serif">te encontrar</span> primeiro.</div>
     </div>
-    <div class="palavra" style="font-size:420px;top:478px">SEO</div>
+    <div class="palavra" style="font-size:400px;top:450px">SEO</div>
     <div class="obj buscador">
       <div class="campo-b"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#2F7D1F" stroke-width="2.6"><circle cx="10" cy="10" r="7"/><path d="M15.5 15.5 22 22"/></svg>sementes de soja perto de mim</div>
       <div class="res"><span class="pos">1º</span><div><b>Sua Empresa</b><small>suaempresa.com.br</small></div></div>
     </div>
-    <div class="legenda" style="bottom:128px"><b>SEO</b> · otimização pra mecanismos de busca:<br>aparecer quando o cliente procura.</div>
+    <div class="legenda" style="bottom:104px"><b>SEO</b> · otimização pra mecanismos de busca:<br>aparecer quando o cliente procura.</div>
     <div class="nota-mao" style="right:70px;bottom:auto;top:560px;transform:rotate(-8deg);text-align:center;line-height:1">não é mágica,<br>é método</div>
     <div class="rodape-mini">agricode · sites e sistemas para o agronegócio</div>
   </div>
@@ -333,11 +337,11 @@
 <section class="slide palha claro s8">
   <div class="janela">
     <div class="foto-fundo textura nuvens"><img src="../assets/fotos/soja-por-do-sol-ceu.jpg" alt=""></div>
-    <div class="titulo" style="top:190px">
+    <div class="titulo" style="top:230px">
       <div class="t-leve">Agora você já fala</div>
       <div class="t-forte">a língua do <span class="serif ambar-escuro" style="font-size:92px">digital.</span></div>
     </div>
-    <div class="banner"><img src="../assets/logo/agricode-banner.jpg" alt="AgriCode"></div>
+    <img class="logo-cta" src="../assets/logo/agricode-logo-full-escura.png" alt="AgriCode" style="top:560px">
     <div class="salva">
       <div class="grande"><svg viewBox="0 0 24 28" fill="none" stroke="#0F2419" stroke-width="2.6" stroke-linejoin="round"><path d="M4 2h16v24l-8-6-8 6z"/></svg>Salva esse post</div>
       <div class="peq">e manda pra quem <span class="serif">precisa</span> ver.</div>

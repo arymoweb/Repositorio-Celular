@@ -262,3 +262,27 @@ body {
 .veu.brilho-sol { background: radial-gradient(120% 60% at 50% 112%, rgba(246, 150, 48, .6), rgba(170, 82, 18, .2) 45%, transparent 72%); mix-blend-mode: screen; }
 .veu.brilho-verde { background: radial-gradient(90% 55% at 50% -5%, rgba(143, 220, 85, .28), transparent 66%); mix-blend-mode: screen; }
 .foto-fundo.textura img { filter: var(--foto-filtro, contrast(1.15) brightness(.8)) blur(var(--desfoque, 2px)); transform: scale(1.06); }
+
+/* =========================================================
+   CORREÇÕES TIPOGRÁFICAS
+   ========================================================= */
+/* sem palavra sozinha na última linha */
+.titulo, .legenda, .linha, .frase, .intro, .comenta, .salva { text-wrap: balance; }
+p, li, small, .bolha, .chip div { text-wrap: pretty; }
+/* letter-spacing deixa um espaço sobrando no fim: compensa para centralizar de verdade */
+.kicker { text-indent: .38em; }
+.kicker-mono { text-indent: .32em; }
+/* ícones em SVG no lugar de símbolos que a fonte não tem (→ ✓ ✕ ● ▮) */
+.ico { display: inline-block; width: .9em; height: .9em; vertical-align: -.08em; fill: none; stroke: currentColor;
+  stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; overflow: visible; }
+.ico.seta { width: 1.1em; }
+.ico.seta-mao { width: 1.3em; height: .8em; stroke-width: 2.2; vertical-align: .02em; }
+.ico.check-mao { width: .9em; stroke-width: 2.4; }
+.status .ico-status { display: inline-flex; gap: 6px; align-items: center; }
+.status .ico-status svg { height: 15px; fill: currentColor; stroke: none; }
+/* logo sem fundo nos slides finais */
+.logo-cta { position: absolute; left: 50%; z-index: 8; transform: translateX(-50%); width: 700px; max-width: 80%;
+  filter: drop-shadow(0 12px 30px rgba(0, 0, 0, .45)) drop-shadow(0 0 40px rgba(143, 220, 85, .18)); }
+.slide.claro .logo-cta { filter: drop-shadow(0 10px 24px rgba(15, 36, 25, .18)); }
+/* partículas mais discretas (não parecer sujeira perto do texto) */
+.particulas i { opacity: .35 !important; }

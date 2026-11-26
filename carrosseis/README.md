@@ -27,7 +27,7 @@ carrosseis/
 ├── 01-sites-em-camadas/carrossel.html
 ├── 02-sistemas-caderno/carrossel.html
 ├── 03-glossario-do-site/carrossel.html
-├── ferramentas/         ← buscar/baixar fotos, recortar fundo (rembg) e aplicar luz de borda
+├── ferramentas/         ← buscar/baixar fotos, recortar fundo, luz de borda e auditoria de fontes
 ├── render.cjs           ← exporta os PNGs
 └── PROMPTS.md           ← análise dos modelos, prompt mestre, prompts de imagem e legendas
 ```
@@ -43,6 +43,8 @@ npm install playwright && npx playwright install chromium   # só na primeira ve
 node carrosseis/render.cjs        # todos os carrosséis
 node carrosseis/render.cjs 02     # só o carrossel 02
 ```
+
+Antes de exportar, rode `node carrosseis/ferramentas/auditar_fontes.cjs`: ele avisa se algum caractere (seta, ✓, ★…) caiu numa fonte reserva e saiu com cara de erro.
 
 Para criar um carrossel novo, copie uma das pastas, renomeie (ex.: `04-loja-virtual`) e use o prompt mestre do [PROMPTS.md](PROMPTS.md).
 
